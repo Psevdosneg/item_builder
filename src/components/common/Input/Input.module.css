@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wrapper.fullWidth {
+  width: 100%;
+}
+
+.label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.input {
+  width: 100%;
+}
+
+.input.error {
+  border-color: var(--accent-danger);
+}
+
+.errorText {
+  font-size: 11px;
+  color: var(--accent-danger);
+}

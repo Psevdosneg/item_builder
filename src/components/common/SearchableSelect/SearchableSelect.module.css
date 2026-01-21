@@ -1,0 +1,151 @@
+.container {
+  position: relative;
+  width: 200px;
+}
+
+.container.fullWidth {
+  width: 100%;
+}
+
+.container.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.selectBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 40px;
+}
+
+.selectBox:hover:not(.disabled .selectBox) {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.2);
+}
+
+.selectedValue {
+  flex: 1;
+  color: var(--text-primary);
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.placeholder {
+  color: var(--text-secondary);
+}
+
+.arrow {
+  margin-left: 8px;
+  color: var(--text-secondary);
+  font-size: 10px;
+  transition: transform 0.2s ease;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.searchBox {
+  padding: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 12px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.searchInput:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.2);
+}
+
+.searchInput::placeholder {
+  color: var(--text-secondary);
+}
+
+.optionsList {
+  overflow-y: auto;
+  max-height: 240px;
+}
+
+.optionsList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.optionsList::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+.optionsList::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+.optionsList::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+.option {
+  padding: 10px 12px;
+  cursor: pointer;
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: background 0.15s ease;
+}
+
+.option:hover {
+  background: var(--bg-primary);
+}
+
+.option.selected {
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  font-weight: 500;
+}
+
+.noResults {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 14px;
+}

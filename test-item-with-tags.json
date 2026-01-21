@@ -1,0 +1,39 @@
+{
+  "weight": 100,
+  "name": "test_weapon",
+  "ico": "uid://test123",
+  "description": "Тестовый предмет с тегами для проверки импорта/экспорта",
+  "points": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 1,
+      "y": 0
+    }
+  ],
+  "tags": [
+    "item",
+    "weapon",
+    "hasCooldown"
+  ],
+  "stats": [
+    {
+      "name": "price",
+      "value": 100
+    },
+    {
+      "name": "level",
+      "value": 1
+    },
+    {
+      "name": "maxLevel",
+      "value": 3
+    },
+    {
+      "name": "rarity",
+      "value": 1
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+[
+  {
+    "name": "characterRelative - ally",
+    "description": "Target enemy characters",
+    "data": {
+      "conditionalType": "characterRelative",
+        "data": 
+        {
+          "relative": "ally"
+        }
+    }
+  },
+  {
+    "name": "characterRelative - enemy",
+    "description": "Target enemy characters",
+    "data": {
+      "conditionalType": "characterRelative",
+        "data": 
+        {
+          "relative": "enemy"
+        }
+    }
+  },
+  {
+    "name": "characterRandom",
+    "description": "Select random character",
+    "data": {
+      "conditionalType": "characterRandom",
+        "data": [
+            {
+                "level": 0,
+                "data": {
+                    "count": 1
+                }
+            },
+            {
+                "level": 1,
+                "data": {
+                    "count": 2
+                }
+            },
+            {
+                "level": 2,
+                "data": {
+                    "count": 3
+                }
+            }
+        ]
+      }
+  },
+  {
+    "name": "Character Tag",
+    "description": "Target characters with specific tag",
+    "data": {
+      "conditionalType": "characterTag",
+      "data": [
+          {
+              "level": 0,
+              "data": {
+                  "tags": [
+                      "crip"
+                  ]
+              }
+          }
+      ]
+    }
+  },
+  {
+    "name": "itemTag",
+    "description": "Check for item tag",
+    "data": {
+      "conditionalType": "itemTag",
+      "data": [
+          {
+              "level": 0,
+              "data": {
+                  "tags": [
+                      "hasCooldown"
+                  ]
+              }
+          }
+      ]
+    }
+  },
+  {
+    "name": "Item Position",
+    "description": "Target based on item position",
+    "data": {
+      "conditionalType": "itemPosition",
+      "data": [
+          {
+              "level": 0,
+              "data": {
+                  "relative": "Relative",
+                  "points": [
+                      {
+                          "x": 1,
+                          "y": 0
+                      }
+                  ]
+              }
+          }
+      ]
+    }
+  },
+  {
+    "name": "itemSelf",
+    "description": "Target the item itself",
+    "data": {
+      "conditionalType": "itemSelf"
+    }
+  },
+  {
+    "name": "characterSelf",
+    "description": "Target the character owning the item",
+    "data": {
+      "conditionalType": "characterSelf"
+    }
+  },
+  {
+    "name": "battleState",
+    "description": "Check battle state condition",
+    "data": {
+      "conditionalType": "battleState",
+      "data": {
+          "state": "madness"
+      }
+    }
+  },
+  {
+    "name": "characterResources",
+    "description": "Check character resources",
+    "data": {
+      "conditionalType": "characterResources",
+      "data": [
+          {
+              "level": 0,
+              "data": {
+                  "mode": "equalGreate",
+                  "resourceId": "rage",
+                  "value": 30
+              }
+          }
+      ]
+    }
+  }
+]

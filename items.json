@@ -1,0 +1,2218 @@
+[
+	{
+		"weight": 100,
+		"name": "cleaver",
+		"ico": "uid://cf2hvytx11emk",
+		"description": "",
+		"points": [
+			{
+				"x": 0,
+				"y": 0
+			},
+			{
+				"x": 1,
+				"y": 0
+			},
+			{
+				"x": 0,
+				"y": 1
+			},
+			{
+				"x": 1,
+				"y": 1
+			},
+			{
+				"x": 0,
+				"y": 2
+			}
+		],
+		"tags": [
+			"item",
+			"weapon",
+            "hasCooldown"
+		],
+		"stats": [
+			{
+				"name": "damage",
+				"value": 5
+			},
+			{
+				"name": "cooldown",
+				"value": 3
+			},
+			{
+				"name": "price",
+				"value": 10
+			},
+			{
+				"name": "level",
+				"value": 0
+			},
+			{
+				"name": "maxLevel",
+				"value": 3
+			}
+		],
+		"logic": [
+			{
+				"nodeType": "trigger",
+				"data": {
+					"triggerType": "cooldown"
+				},
+				"children": [
+					{
+						"nodeType": "checker",
+						"data": {
+							"checkerType": "cooldown"
+						}
+					},
+					{
+						"nodeType": "activator",
+						"data": {
+							"activatorType": "damage"
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRelative",
+									"data": {
+										"relative": "enemy"
+									}
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRandom",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"count": 1
+											}
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"nodeType": "activator",
+						"data": {
+							"activatorType": "changeResource",
+							"data": [
+								{
+									"level": 0,
+									"data": {
+										"resource": "rage",
+										"value": 1
+									}
+								},
+								{
+									"level": 1,
+									"data": {
+										"resource": "rage",
+										"value": 2
+									}
+								},
+								{
+									"level": 2,
+									"data": {
+										"resource": "rage",
+										"value": 3
+									}
+								}
+							]
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRelative",
+									"data": {
+										"relative": "ally"
+									}
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRandom",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"count": 1
+											}
+										},
+										{
+											"level": 1,
+											"data": {
+												"count": 2
+											}
+										},
+										{
+											"level": 2,
+											"data": {
+												"count": 3
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				"nodeType": "aura",
+				"data": {
+					"effectType": "item",
+					"data": {
+						"isDebuff": false,
+						"modificateStats": [
+							{
+								"level": 0,
+								"data": [
+									{
+										"name": "addedMulticast",
+										"value": 1
+									}
+								]
+							},
+							{
+								"level": 1,
+								"data": [
+									{
+										"name": "addedMulticast",
+										"value": 2
+									}
+								]
+							}
+						]
+					}
+				},
+				"children": [
+					{
+						"nodeType": "conditional",
+						"data": {
+							"conditionalType": "battleState",
+							"data": {
+								"state": "madness"
+							}
+						}
+					},
+					{
+						"nodeType": "conditional",
+						"data": {
+							"conditionalType": "itemSelf"
+						}
+					}
+				]
+			}
+		]
+	},
+	{
+		"weight": 100,
+		"name": "rageCleaver",
+		"ico": "uid://cf2hvytx11emk",
+		"description": "",
+		"points": [
+			{
+				"x": 0,
+				"y": 0
+			},
+			{
+				"x": 1,
+				"y": 0
+			},
+			{
+				"x": 0,
+				"y": 1
+			},
+			{
+				"x": 1,
+				"y": 1
+			},
+			{
+				"x": 0,
+				"y": 2
+			}
+		],
+		"tags": [
+			"item",
+			"weapon",
+            "hasCooldown"
+		],
+		"stats": [
+			{
+				"name": "price",
+				"value": 10
+			},
+			{
+				"name": "level",
+				"value": 0
+			},
+			{
+				"name": "maxLevel",
+				"value": 3
+			},
+			{
+				"name": "damage",
+				"value": 50
+			},
+			{
+				"name": "cooldown",
+				"value": 5
+			}
+		],
+		"logic": [
+			{
+				"nodeType": "trigger",
+				"data": {
+					"triggerType": "cooldown"
+				},
+				"children": [
+					{
+						"nodeType": "checker",
+						"data": {
+							"checkerType": "cooldown"
+						}
+					},
+					{
+						"nodeType": "checker",
+						"data": {
+							"checkerType": "resourcePrice",
+							"data": [
+								{
+									"level": 0,
+									"data": {
+										"resource": "rage",
+										"count": 10
+									}
+								},
+								{
+									"level": 1,
+									"data": {
+										"resource": "rage",
+										"count": 15
+									}
+								},
+								{
+									"level": 2,
+									"data": {
+										"resource": "rage",
+										"count": 20
+									}
+								}
+							]
+						}
+					},
+					{
+						"nodeType": "activator",
+						"data": {
+							"activatorType": "damage"
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRelative",
+									"data": {
+										"relative": "enemy"
+									}
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRandom",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"count": 1
+											}
+										},
+										{
+											"level": 1,
+											"data": {
+												"count": 2
+											}
+										},
+										{
+											"level": 2,
+											"data": {
+												"count": 3
+											}
+										}
+									]
+								}
+							},
+							{
+								"nodeType": "activator",
+								"data": {
+									"activatorType": "changeResource",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"resource": "bleed",
+												"value": 5
+											}
+										},
+										{
+											"level": 1,
+											"data": {
+												"resource": "bleed",
+												"value": 10
+											}
+										},
+										{
+											"level": 2,
+											"data": {
+												"resource": "bleed",
+												"value": 15
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				"nodeType": "aura",
+				"data": {
+					"effectType": "item",
+					"data": {
+						"isDebuff": false,
+						"modificateStats": [
+							{
+								"level": 0,
+								"data": [
+									{
+										"name": "addedDamage",
+										"value": 1
+									}
+								]
+							},
+							{
+								"level": 1,
+								"data": [
+									{
+										"name": "addedDamage",
+										"value": 2
+									}
+								]
+							},
+							{
+								"level": 2,
+								"data": [
+									{
+										"name": "addedDamage",
+										"value": 3
+									}
+								]
+							}
+						]
+					}
+				},
+				"children": [
+					{
+						"nodeType": "conditional",
+						"data": {
+							"conditionalType": "itemSelf"
+						}
+					},
+					{
+						"nodeType": "counter",
+						"data": {
+							"type": "resources",
+							"data": {
+								"resourceId": "rage"
+							}
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterSelf"
+								}
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"weight": 100,
+		"name": "ratBox",
+		"ico": "uid://c1x3pl4eitl4o",
+		"description": "",
+		"points": [
+			{
+				"x": 0,
+				"y": 0
+			},
+			{
+				"x": 1,
+				"y": 0
+			},
+			{
+				"x": 0,
+				"y": 1
+			},
+			{
+				"x": 1,
+				"y": 1
+			}
+		],
+		"tags": [
+			"item",
+            "hasCooldown"
+		],
+		"stats": [
+			{
+				"name": "price",
+				"value": 10
+			},
+			{
+				"name": "level",
+				"value": 0
+			},
+			{
+				"name": "maxLevel",
+				"value": 3
+			},
+			{
+				"name": "cooldown",
+				"value": 2
+			}
+		],
+		"logic": [
+			{
+				"nodeType": "trigger",
+				"data": {
+					"triggerType": "cooldown"
+				},
+				"children": [
+					{
+						"nodeType": "checker",
+						"data": {
+							"checkerType": "cooldown"
+						}
+					},
+					{
+						"nodeType": "activator",
+						"data": {
+							"activatorType": "spawner",
+							"data": [
+								{
+									"level": 0,
+									"data": {
+										"characterId": "CripSmall",
+										"relative": "ally"
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		]
+	},
+	{
+		"weight": 100,
+		"name": "corn",
+		"ico": "uid://dhedhg3sho8yl",
+		"description": "",
+		"points": [
+			{
+				"x": 0,
+				"y": 0
+			},
+			{
+				"x": 0,
+				"y": 1
+			},
+			{
+				"x": 0,
+				"y": 2
+			}
+		],
+		"tags": [
+			"item",
+            "hasCooldown"
+		],
+		"stats": [
+			{
+				"name": "price",
+				"value": 10
+			},
+			{
+				"name": "level",
+				"value": 0
+			},
+			{
+				"name": "maxLevel",
+				"value": 3
+			},
+			{
+				"name": "cooldown",
+				"value": 8
+			}
+		],
+		"logic": [
+			{
+				"nodeType": "trigger",
+				"data": {
+					"triggerType": "cooldown"
+				},
+				"children": [
+					{
+						"nodeType": "checker",
+						"data": {
+							"checkerType": "cooldown"
+						}
+					},
+					{
+						"nodeType": "activator",
+						"data": {
+							"activatorType": "spawner",
+							"data": [
+								{
+									"level": 0,
+									"data": {
+										"characterId": "CripBig",
+										"relative": "ally"
+									}
+								}
+							]
+						}
+					},
+					{
+						"nodeType": "activator",
+						"data": {
+							"activatorType": "addItemStateTag",
+							"data": [
+								{
+									"level": 0,
+									"data": {
+										"tags": [
+											{
+												"time": 2,
+												"tag": "slowed"
+											}
+										]
+									}
+								}
+							]
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "itemRandom",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"count": 2
+											}
+										},
+										{
+											"level": 1,
+											"data": {
+												"count": 3
+											}
+										},
+										{
+											"level": 2,
+											"data": {
+												"count": 4
+											}
+										}
+									]
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRelative",
+									"data": {
+										"relative": "enemy"
+									}
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterTag",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"tags": [
+                                                    "mainCharacter"
+												]
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"weight": 100,
+		"name": "clock",
+		"ico": "uid://25es4amof7mq",
+		"description": "",
+		"points": [
+			{
+				"x": 0,
+				"y": 0
+			},
+			{
+				"x": 1,
+				"y": 0
+			},
+			{
+				"x": 0,
+				"y": 1
+			},
+			{
+				"x": 1,
+				"y": 1
+			}
+		],
+		"tags": [
+			"item",
+			"weapon",
+            "hasCooldown"
+		],
+		"stats": [
+			{
+				"name": "price",
+				"value": 10
+			},
+			{
+				"name": "level",
+				"value": 0
+			},
+			{
+				"name": "maxLevel",
+				"value": 3
+			},
+			{
+				"name": "cooldown",
+				"value": 12
+			},
+			{
+				"name": "damage",
+				"value": 25
+			},
+			{
+				"name": "multicast",
+				"value": 1
+			}
+		],
+		"logic": [
+			{
+				"nodeType": "trigger",
+				"data": {
+					"triggerType": "cooldown"
+				},
+				"children": [
+					{
+						"nodeType": "checker",
+						"data": {
+							"checkerType": "cooldown"
+						}
+					},
+					{
+						"nodeType": "activator",
+						"data": {
+							"activatorType": "damage"
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRelative",
+									"data": {
+										"relative": "enemy"
+									}
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRandom",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"count": 1
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				"nodeType": "trigger",
+				"data": {
+					"triggerType": "itemActivated",
+					"ignoreActivationTrigger": true
+				},
+				"children": [
+					{
+						"nodeType": "checker",
+						"data": {
+							"checkerType": "itemConditional"
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "itemTag",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"tags": [
+                                                    "hasCooldown"
+												]
+											}
+										}
+									]
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterSelf"
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "itemPosition",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"relative": "Relative",
+												"points": [
+													{
+														"x": -1,
+														"y": 0
+													},
+													{
+														"x": -1,
+														"y": 1
+													},
+													{
+														"x": 2,
+														"y": 0
+													},
+													{
+														"x": 2,
+														"y": 1
+													}
+												]
+											}
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"nodeType": "activator",
+						"data": {
+							"activatorType": "chargeItem",
+							"data": [
+								{
+									"level": 0,
+									"data": {
+										"value": 1
+									}
+								},
+								{
+									"level": 1,
+									"data": {
+										"value": 1.5
+									}
+								},
+								{
+									"level": 2,
+									"data": {
+										"value": 2
+									}
+								}
+							]
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "itemSelf"
+								}
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"weight": 100,
+		"name": "lamp",
+		"ico": "res://Resources/Items/Lamp.png",
+		"description": "",
+		"points": [
+			{
+				"x": 0,
+				"y": 0
+			},
+			{
+				"x": 0,
+				"y": 1
+			},
+			{
+				"x": 0,
+				"y": 2
+			}
+		],
+		"tags": [
+			"item",
+            "chargesRef"
+		],
+		"stats": [
+			{
+				"name": "price",
+				"value": 10
+			},
+			{
+				"name": "level",
+				"value": 0
+			},
+			{
+				"name": "maxLevel",
+				"value": 3
+			}
+		],
+		"logic": [
+			{
+				"nodeType": "trigger",
+				"data": {
+					"triggerType": "itemChargesChanged",
+					"ignoreActivationTrigger": true
+				},
+				"children": [
+					{
+						"nodeType": "checker",
+						"data": {
+							"checkerType": "itemConditional"
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "itemTag",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"tags": [
+                                                    "charges"
+												]
+											}
+										}
+									]
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterSelf"
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "itemPosition",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"relative": "Relative",
+												"points": [
+													{
+														"x": -1,
+														"y": 1
+													}
+												]
+											}
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"nodeType": "activator",
+						"data": {
+							"activatorType": "changeItemCharge",
+							"data": [
+								{
+									"level": 0,
+									"data": {
+										"charge": "uses",
+										"count": 1
+									}
+								},
+								{
+									"level": 1,
+									"data": {
+										"charge": "uses",
+										"count": 2
+									}
+								},
+								{
+									"level": 2,
+									"data": {
+										"charge": "uses",
+										"count": 3
+									}
+								}
+							]
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "itemTag",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"tags": [
+                                                    "charges"
+												]
+											}
+										}
+									]
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterSelf"
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "itemPosition",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"relative": "Relative",
+												"points": [
+													{
+														"x": 1,
+														"y": 1
+													}
+												]
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"weight": 100,
+		"name": "drill",
+		"ico": "res://Resources/Items/Drill.png",
+		"description": "",
+		"pivot": {
+			"x": 1,
+			"y": 1
+		},
+		"points": [
+			{
+				"x": 1,
+				"y": 0
+			},
+			{
+				"x": 0,
+				"y": 1
+			},
+			{
+				"x": 1,
+				"y": 1
+			},
+			{
+				"x": 2,
+				"y": 1
+			},
+			{
+				"x": 3,
+				"y": 1
+			},
+			{
+				"x": 4,
+				"y": 1
+			}
+		],
+		"tags": [
+			"item",
+			"charges",
+			"weapon",
+            "hasCooldown"
+		],
+		"stats": [
+			{
+				"name": "price",
+				"value": 10
+			},
+			{
+				"name": "level",
+				"value": 0
+			},
+			{
+				"name": "maxLevel",
+				"value": 3
+			},
+			{
+				"name": "damage",
+				"value": 5
+			},
+			{
+				"name": "cooldown",
+				"value": 3
+			},
+			{
+				"name": "multicast",
+				"value": 3
+			}
+		],
+		"charges": [
+			{
+				"name": "uses",
+				"value": 3
+			},
+			{
+				"name": "maxUses",
+				"value": 5
+			}
+		],
+		"logic": [
+			{
+				"nodeType": "trigger",
+				"data": {
+					"triggerType": "cooldown"
+				},
+				"children": [
+					{
+						"nodeType": "checker",
+						"data": {
+							"checkerType": "cooldown"
+						}
+					},
+					{
+						"nodeType": "checker",
+						"data": {
+							"checkerType": "chargePrice",
+							"data": [
+								{
+									"level": 0,
+									"data": {
+										"charge": "uses",
+										"count": 1
+									}
+								}
+							]
+						}
+					},
+					{
+						"nodeType": "activator",
+						"data": {
+							"activatorType": "damage"
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRelative",
+									"data": {
+										"relative": "enemy"
+									}
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRandom",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"count": 1
+											}
+										},
+										{
+											"level": 1,
+											"data": {
+												"count": 2
+											}
+										},
+										{
+											"level": 2,
+											"data": {
+												"count": 3
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"weight": 100,
+		"name": "damageBuster",
+		"ico": "uid://p562t6l1flga",
+		"description": "",
+		"points": [
+			{
+				"x": 0,
+				"y": 0
+			},
+			{
+				"x": 1,
+				"y": 0
+			},
+			{
+				"x": 0,
+				"y": 1
+			},
+			{
+				"x": 1,
+				"y": 1
+			}
+		],
+		"tags": [
+			"item",
+            "aura"
+		],
+		"stats": [
+			{
+				"name": "price",
+				"value": 10
+			},
+			{
+				"name": "level",
+				"value": 0
+			},
+			{
+				"name": "maxLevel",
+				"value": 3
+			}
+		],
+		"logic": [
+			{
+				"nodeType": "aura",
+				"data": {
+					"effectType": "item",
+					"data": {
+						"isDebuff": false,
+						"modificateStats": [
+							{
+								"level": 0,
+								"data": [
+									{
+										"name": "addedDamage",
+										"value": 20
+									},
+									{
+										"name": "addedMulticast",
+										"value": 1
+									}
+								]
+							},
+							{
+								"level": 1,
+								"data": [
+									{
+										"name": "addedDamage",
+										"value": 40
+									},
+									{
+										"name": "addedMulticast",
+										"value": 1
+									}
+								]
+							},
+							{
+								"level": 2,
+								"data": [
+									{
+										"name": "addedDamage",
+										"value": 60
+									},
+									{
+										"name": "addedMulticast",
+										"value": 2
+									}
+								]
+							}
+						]
+					}
+				},
+				"children": [
+					{
+						"nodeType": "conditional",
+						"data": {
+							"conditionalType": "characterResources",
+							"data": [
+								{
+									"level": 0,
+									"data": {
+										"mode": "equalGreate",
+										"resourceId": "rage",
+										"value": 30
+									}
+								}
+							]
+						}
+					},
+					{
+						"nodeType": "conditional",
+						"data": {
+							"conditionalType": "itemTag",
+							"data": [
+								{
+									"level": 0,
+									"data": {
+										"tags": [
+                                            "weapon"
+										]
+									}
+								}
+							]
+						}
+					},
+					{
+						"nodeType": "conditional",
+						"data": {
+							"conditionalType": "characterSelf"
+						}
+					},
+					{
+						"nodeType": "conditional",
+						"data": {
+							"conditionalType": "itemPosition",
+							"data": [
+								{
+									"level": 0,
+									"data": {
+										"relative": "Relative",
+										"points": [
+											{
+												"x": -1,
+												"y": 0
+											},
+											{
+												"x": -1,
+												"y": 1
+											},
+											{
+												"x": 2,
+												"y": 0
+											},
+											{
+												"x": 2,
+												"y": 1
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		]
+	},
+	{
+		"weight": 100,
+		"name": "stopSign",
+		"ico": "uid://sipa4bewtay5",
+		"description": "",
+		"points": [
+			{
+				"x": 0,
+				"y": 0
+			},
+			{
+				"x": 0,
+				"y": 1
+			},
+			{
+				"x": 0,
+				"y": 2
+			}
+		],
+		"tags": [
+			"item",
+			"weapon",
+			"hasCooldown",
+            "cripRef"
+		],
+		"stats": [
+			{
+				"name": "price",
+				"value": 10
+			},
+			{
+				"name": "level",
+				"value": 0
+			},
+			{
+				"name": "maxLevel",
+				"value": 3
+			},
+			{
+				"name": "damage",
+				"value": 100
+			},
+			{
+				"name": "cooldown",
+				"value": 3
+			}
+		],
+		"logic": [
+			{
+				"nodeType": "trigger",
+				"data": {
+					"triggerType": "cooldown"
+				},
+				"children": [
+					{
+						"nodeType": "checker",
+						"data": {
+							"checkerType": "cooldown"
+						}
+					},
+					{
+						"nodeType": "checker",
+						"data": {
+							"checkerType": "allyPrice",
+							"data": [
+								{
+									"level": 1,
+									"data": {
+										"count": 1
+									}
+								}
+							]
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterTag",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"tags": [
+                                                    "crip"
+												]
+											}
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"nodeType": "activator",
+						"data": {
+							"activatorType": "damage"
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRelative",
+									"data": {
+										"relative": "enemy"
+									}
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRandom",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"count": 1
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"weight": 100,
+		"name": "scratchWand",
+		"ico": "uid://bb51mda2fp5vt",
+		"description": "",
+		"points": [
+			{
+				"x": 0,
+				"y": 0
+			},
+			{
+				"x": 0,
+				"y": 1
+			},
+			{
+				"x": 0,
+				"y": 2
+			}
+		],
+		"tags": [
+			"item",
+			"weapon",
+            "hasCooldown"
+		],
+		"stats": [
+			{
+				"name": "price",
+				"value": 10
+			},
+			{
+				"name": "level",
+				"value": 0
+			},
+			{
+				"name": "maxLevel",
+				"value": 3
+			},
+			{
+				"name": "damage",
+				"value": 0
+			},
+			{
+				"name": "cooldown",
+				"value": 3
+			}
+		],
+		"logic": [
+			{
+				"nodeType": "trigger",
+				"data": {
+					"triggerType": "cooldown"
+				},
+				"children": [
+					{
+						"nodeType": "checker",
+						"data": {
+							"checkerType": "cooldown"
+						}
+					},
+					{
+						"nodeType": "activator",
+						"data": {
+							"activatorType": "damage"
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRelative",
+									"data": {
+										"relative": "enemy"
+									}
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRandom",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"count": 1
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				"nodeType": "aura",
+				"data": {
+					"effectType": "item",
+					"data": {
+						"isDebuff": false,
+						"modificateStats": [
+							{
+								"level": 0,
+								"data": [
+									{
+										"name": "addedDamage",
+										"value": 100
+									}
+								]
+							},
+							{
+								"level": 1,
+								"data": [
+									{
+										"name": "addedDamage",
+										"value": 150
+									}
+								]
+							},
+							{
+								"level": 2,
+								"data": [
+									{
+										"name": "addedDamage",
+										"value": 60
+									}
+								]
+							}
+						]
+					}
+				},
+				"children": [
+					{
+						"nodeType": "conditional",
+						"data": {
+							"conditionalType": "itemSelf"
+						}
+					},
+					{
+						"nodeType": "counter",
+						"data": {
+							"type": "character"
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRelative",
+									"data": {
+										"relative": "ally"
+									}
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterTag",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"tags": [
+                                                    "crip"
+												]
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"weight": 100,
+		"name": "energyDrink",
+		"ico": "uid://co6awgk5njkt5",
+		"description": "",
+		"points": [
+			{
+				"x": 0,
+				"y": 0
+			},
+			{
+				"x": 0,
+				"y": 1
+			}
+		],
+		"tags": [
+            "hasCooldown"
+		],
+		"stats": [
+			{
+				"name": "price",
+				"value": 10
+			},
+			{
+				"name": "level",
+				"value": 0
+			},
+			{
+				"name": "maxLevel",
+				"value": 3
+			},
+			{
+				"name": "cooldown",
+				"value": 3
+			}
+		],
+		"logic": [
+			{
+				"nodeType": "trigger",
+				"data": {
+					"triggerType": "changeBattleState",
+					"ignoreActivationTrigger": true
+				},
+				"children": [
+					{
+						"nodeType": "checker",
+						"data": {
+							"checkerType": "battleState",
+							"data": {
+								"battleState": "madness"
+							}
+						}
+					},
+					{
+						"nodeType": "activator",
+						"data": {
+							"activatorType": "changeResource",
+							"data": [
+								{
+									"level": 0,
+									"data": {
+										"resource": "rage",
+										"value": 100
+									}
+								},
+								{
+									"level": 1,
+									"data": {
+										"resource": "rage",
+										"value": 200
+									}
+								},
+								{
+									"level": 2,
+									"data": {
+										"resource": "rage",
+										"value": 300
+									}
+								}
+							]
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRelative",
+									"data": {
+										"relative": "ally"
+									}
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRandom",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"count": 1
+											}
+										},
+										{
+											"level": 1,
+											"data": {
+												"count": 2
+											}
+										},
+										{
+											"level": 2,
+											"data": {
+												"count": 3
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				"nodeType": "trigger",
+				"data": {
+					"triggerType": "cooldown"
+				},
+				"children": [
+					{
+						"nodeType": "checker",
+						"data": {
+							"checkerType": "cooldown"
+						}
+					},
+					{
+						"nodeType": "activator",
+						"data": {
+							"activatorType": "changeResource",
+							"data": [
+								{
+									"level": 0,
+									"data": {
+										"resource": "mana",
+										"value": 0
+									}
+								}
+							]
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterSelf"
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				"nodeType": "aura",
+				"data": {
+					"effectType": "item",
+					"data": {
+						"isDebuff": false,
+						"modificateStats": [
+							{
+								"level": 0,
+								"data": [
+									{
+										"name": "addedMana",
+										"value": 5
+									}
+								]
+							},
+							{
+								"level": 1,
+								"data": [
+									{
+										"name": "addedMana",
+										"value": 10
+									}
+								]
+							},
+							{
+								"level": 2,
+								"data": [
+									{
+										"name": "addedMana",
+										"value": 15
+									}
+								]
+							}
+						]
+					}
+				},
+				"children": [
+					{
+						"nodeType": "conditional",
+						"data": {
+							"conditionalType": "itemSelf"
+						}
+					},
+					{
+						"nodeType": "counter",
+						"data": {
+							"type": "item",
+							"data": {
+								"includeDestroyed": false
+							}
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterSelf"
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "itemTag",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"tags": [
+                                                    "hasCooldown"
+												]
+											}
+										}
+									]
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "itemPosition",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"relative": "Relative",
+												"points": [
+													{
+														"x": 1,
+														"y": 0
+													},
+													{
+														"x": 1,
+														"y": 1
+													},
+													{
+														"x": -1,
+														"y": 0
+													},
+													{
+														"x": -1,
+														"y": 1
+													}
+												]
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"weight": 100,
+		"name": "aidKit",
+		"ico": "uid://dlgq2u4pils05",
+		"description": "",
+		"points": [
+			{
+				"x": 0,
+				"y": 0
+			},
+			{
+				"x": 0,
+				"y": 1
+			},
+			{
+				"x": 0,
+				"y": 2
+			},
+			{
+				"x": 1,
+				"y": 0
+			},
+			{
+				"x": 1,
+				"y": 1
+			},
+			{
+				"x": 1,
+				"y": 2
+			}
+		],
+		"tags": [
+            "hasCooldown"
+		],
+		"stats": [
+			{
+				"name": "price",
+				"value": 10
+			},
+			{
+				"name": "level",
+				"value": 0
+			},
+			{
+				"name": "maxLevel",
+				"value": 3
+			}
+		],
+		"logic": [
+			{
+				"nodeType": "trigger",
+				"data": {
+					"triggerType": "cripSpawn",
+					"ignoreActivationTrigger": true
+				},
+				"children": [
+					{
+						"nodeType": "checker",
+						"data": {
+							"checkerType": "cripConditional"
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterTag",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"tags": [
+                                                    "crip"
+												]
+											}
+										}
+									]
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRelative",
+									"data": {
+										"relative": "ally"
+									}
+								}
+							}
+						]
+					},
+					{
+						"nodeType": "activator",
+						"data": {
+							"activatorType": "changeResource",
+							"data": [
+								{
+									"level": 0,
+									"data": {
+										"resource": "regeneration",
+										"value": 10
+									}
+								},
+								{
+									"level": 1,
+									"data": {
+										"resource": "regeneration",
+										"value": 20
+									}
+								},
+								{
+									"level": 2,
+									"data": {
+										"resource": "regeneration",
+										"value": 30
+									}
+								}
+							]
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterSelf"
+								}
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"weight": 100,
+		"name": "cracker",
+		"ico": "uid://j1c7lyq727a",
+		"description": "",
+		"points": [
+			{
+				"x": 0,
+				"y": 0
+			},
+			{
+				"x": 0,
+				"y": 1
+			},
+			{
+				"x": 0,
+				"y": 2
+			}
+		],
+		"tags": [
+            "hasCooldown"
+		],
+		"stats": [
+			{
+				"name": "price",
+				"value": 10
+			},
+			{
+				"name": "level",
+				"value": 0
+			},
+			{
+				"name": "maxLevel",
+				"value": 3
+			}
+		],
+		"logic": [
+			{
+				"nodeType": "trigger",
+				"data": {
+					"triggerType": "cripDeath",
+					"ignoreActivationTrigger": true
+				},
+				"children": [
+					{
+						"nodeType": "checker",
+						"data": {
+							"checkerType": "cripConditional"
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterTag",
+									"data": [
+										{
+											"level": 0,
+											"data": {
+												"tags": [
+                                                    "crip"
+												]
+											}
+										}
+									]
+								}
+							},
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterRelative",
+									"data": {
+										"relative": "ally"
+									}
+								}
+							}
+						]
+					},
+					{
+						"nodeType": "activator",
+						"data": {
+							"activatorType": "heal"
+						},
+						"children": [
+							{
+								"nodeType": "conditional",
+								"data": {
+									"conditionalType": "characterSelf"
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				"nodeType": "aura",
+				"data": {
+					"effectType": "item",
+					"data": {
+						"isDebuff": false,
+						"modificateStats": [
+							{
+								"level": 0,
+								"data": [
+									{
+										"name": "addedHeal",
+										"value": 100
+									}
+								]
+							},
+							{
+								"level": 1,
+								"data": [
+									{
+										"name": "addedHeal",
+										"value": 200
+									}
+								]
+							},
+							{
+								"level": 2,
+								"data": [
+									{
+										"name": "addedHeal",
+										"value": 300
+									}
+								]
+							}
+						]
+					}
+				},
+				"children": [
+					{
+						"nodeType": "conditional",
+						"data": {
+							"conditionalType": "characterSelf"
+						}
+					},
+					{
+						"nodeType": "conditional",
+						"data": {
+							"conditionalType": "itemSelf"
+						}
+					}
+				]
+			}
+		]
+	}
+]

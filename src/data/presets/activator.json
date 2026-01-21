@@ -1,0 +1,181 @@
+[
+  {
+    "name": "damage",
+    "description": "Deal damage to target",
+    "data": {
+      "activatorType": "damage"
+    }
+  },
+  {
+    "name": "changeResource",
+    "description": "Modify target's resources",
+    "data": {
+            "activatorType": "changeResource",
+            "data": 
+            [
+              {
+                "level": 0,
+                "data": 
+                {
+                  "resource": "rage",
+                  "value": 1
+                }
+              },
+              {
+                "level": 1,
+                "data": 
+                {
+                  "resource": "rage",
+                  "value": 2
+                }
+              },
+              {
+                "level": 2,
+                "data": 
+                {
+                  "resource": "rage",
+                  "value": 3
+                }
+              }
+            ]
+    }
+  },
+  {
+    "name": "consumeResource",
+    "description": "Modify target's resources",
+    "data": {
+            "activatorType": "consumeResource",
+            "data": 
+            [
+              {
+                "level": 0,
+                "data": 
+                {
+                  "resource": "rage",
+                  "value": 1
+                }
+              },
+              {
+                "level": 1,
+                "data": 
+                {
+                  "resource": "rage",
+                  "value": 2
+                }
+              },
+              {
+                "level": 2,
+                "data": 
+                {
+                  "resource": "rage",
+                  "value": 3
+                }
+              }
+            ]
+    }
+  },
+  {
+    "name": "spawner",
+    "description": "Spawn units or entities",
+    "data": {
+							"activatorType": "spawner",
+							"data": 
+              [
+								{
+									"level": 0,
+									"data": 
+                  {
+										"characterId": "CripSmall",
+										"relative": "ally"
+									}
+								}
+							]
+						}
+  },
+  {
+    "name": "addItemStateTag",
+    "description": "Add a state tag to item",
+    "data": {
+							"activatorType": "addItemStateTag",
+							"data": [
+								{
+									"level": 0,
+									"data": 
+									{
+										"tags": 
+										[
+											{
+												"time": 2,
+												"tag": "slowed"
+											}
+										]
+									}
+								}
+							]
+						}
+  },
+  {
+    "name": "impulseItem",
+    "description": "Add charges to item",
+    "data": {
+							"activatorType": "impulseItem",
+							"data": [
+								{
+									"level": 0,
+									"data": {
+										"value": 1
+									}
+								},
+								{
+									"level": 1,
+									"data": {
+										"value": 1.5
+									}
+								},
+								{
+									"level": 2,
+									"data": {
+										"value": 2
+									}
+								}
+							]
+						}
+  },
+  {
+    "name": "heal",
+    "description": "Restore health to target",
+    "data": {
+							"activatorType": "heal"
+						}
+  },
+  {
+    "name": "changeItemCharge",
+    "description": "",
+    "data": {
+      "activatorType": "changeItemCharge",
+      "data": [
+          {
+              "level": 0,
+              "data": {
+                  "charge": "uses",
+                  "count": 1
+              }
+          },
+          {
+              "level": 1,
+              "data": {
+                  "charge": "uses",
+                  "count": 2
+              }
+          },
+          {
+              "level": 2,
+              "data": {
+                  "charge": "uses",
+                  "count": 3
+              }
+          }
+      ]
+    }
+  }
+]

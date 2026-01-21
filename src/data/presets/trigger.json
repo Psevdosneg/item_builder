@@ -1,0 +1,90 @@
+[
+  {
+    "name": "cooldown",
+    "description": "Basic cooldown-based trigger",
+    "data": {
+      "triggerType": "cooldown"
+    }
+  },
+  {
+    "name": "itemActivated",
+    "description": "Triggers when item is activated (ignores own activation)",
+    "data": {
+      "triggerType": "itemActivated",
+      "ignoreActivationTrigger": true
+    }
+  },
+  {
+    "name": "changeBattleState",
+    "description": "Triggers on battle state change",
+    "data": {
+      "triggerType": "changeBattleState",
+      "ignoreActivationTrigger": true
+    }
+  },
+  {
+    "name": "itemChargesChanged",
+    "description": "Triggers when item charges change",
+    "data": {
+      "triggerType": "itemChargesChanged",
+      "ignoreActivationTrigger": true
+    }
+  },
+  {
+    "name": "cripSpawn",
+    "description": "Triggers when a crip spawns",
+    "data": {
+      "triggerType": "cripSpawn",
+      "ignoreActivationTrigger": true
+    }
+  },
+  {
+    "name": "cripDeath",
+    "description": "Triggers when a crip dies",
+    "data": {
+      "triggerType": "cripDeath",
+      "ignoreActivationTrigger": true
+    }
+  },
+  {
+    "name": "dealDamage",
+    "description": "",
+    "data": {
+      "triggerType": "dealDamage",
+      "ignoreActivationTrigger": true
+    }
+  },
+  {
+    "name": "getDamage",
+    "description": "",
+    "data": {
+      "triggerType": "getDamage",
+      "ignoreActivationTrigger": true
+    }
+  },
+  {
+    "name": "dealHeal",
+    "description": "",
+    "data": {
+      "triggerType": "dealHeal",
+      "ignoreActivationTrigger": true
+    }
+  },
+  {
+    "name": "getHeal",
+    "description": "",
+    "data": {
+      "triggerType": "getHeal",
+      "ignoreActivationTrigger": true
+    }
+  },
+  {
+    "name": "battleStart",
+    "description": "",
+    "data": {
+      "triggerType": "battleStart",
+      "ignoreActivationTrigger": true
+    }
+  }
+  
+]

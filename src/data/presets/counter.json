@@ -1,0 +1,33 @@
+[
+  {
+    "name": "resources counter",
+    "description": "Count specific resource amount",
+    "data": {
+							"type": "resources",
+							"data": 
+              {
+                "type": "resources",
+                "data": {
+                    "resourceId": "rage"
+                }
+							}
+						}
+  },
+  {
+    "name": "character Counter",
+    "description": "Count characters",
+    "data": {
+							"type": "character"
+						}
+  },
+  {
+    "name": "items Counter",
+    "description": "Count items ",
+    "data": {
+              "type": "item",
+              "data": {
+                  "includeDestroyed": false
+              }
+						}
+  }
+]

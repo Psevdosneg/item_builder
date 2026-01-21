@@ -1,0 +1,123 @@
+[
+  {
+    "name": "cooldown",
+    "description": "Check if cooldown requirement is met",
+    "data": {
+      "checkerType": "cooldown"
+    }
+  },
+  {
+    "name": "resourcePrice",
+    "description": "Check if player has enough resources",
+    "data": {
+        "checkerType": "resourcePrice",
+        "data": [
+            {
+                "level": 0,
+                "data": {
+                    "resource": "rage",
+                    "count": 10
+                }
+            },
+            {
+                "level": 1,
+                "data": {
+                    "resource": "rage",
+                    "count": 15
+                }
+            },
+            {
+                "level": 2,
+                "data": {
+                    "resource": "rage",
+                    "count": 20
+                }
+            }
+        ]
+    }
+  },
+  {
+    "name": "chargePrice",
+    "description": "Check if item has enough charges",
+      "data": {
+          "checkerType": "chargePrice",
+          "data": [
+              {
+                  "level": 0,
+                  "data": {
+                      "charge": "uses",
+                      "count": 1
+                  }
+              },
+              {
+                  "level": 1,
+                  "data": {
+                      "charge": "uses",
+                      "count": 1
+                  }
+              },
+              {
+                  "level": 2,
+                  "data": {
+                      "charge": "uses",
+                      "count": 1
+                  }
+              }
+          ]
+      }
+  },
+  {
+    "name": "allyPrice",
+    "description": "Check if player has enough allies",
+      "data": {
+          "checkerType": "allyPrice",
+          "data": [
+              {
+                  "level": 0,
+                  "data": 
+                  {
+                      "count": 1
+                  }
+              },
+              {
+                  "level": 1,
+                  "data": 
+                  {
+                      "count": 1
+                  }
+              },
+              {
+                  "level": 3,
+                  "data": 
+                  {
+                      "count": 1
+                  }
+              }
+          ]
+      }
+  },
+  {
+    "name": "Battle State Check",
+    "description": "Check current battle state",
+    "data": {
+      "checkerType": "battleState",
+      "data": {
+          "battleState": "madness"
+      }
+  }
+  },
+  {
+    "name": "itemConditional",
+    "description": "Check item state or tags",
+    "data": {
+      "checkerType": "itemConditional"
+    }
+  },
+  {
+    "name": "Crip Conditional",
+    "description": "Check crip conditions",
+    "data": {
+      "checkerType": "cripConditional"
+    }
+  }
+]
