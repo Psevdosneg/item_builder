@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from './app/hooks';
-import { loadItem } from './features/item/itemSlice';
+import { loadItem, setTags } from './features/item/itemSlice';
+import { AVAILABLE_TAGS } from './utils/tags';
 import { setPoints, setPivot } from './features/grid/gridSlice';
 import { loadStatsData } from './features/stats/statsSlice';
 import { loadLogicTree } from './features/logic/logicSlice';
@@ -74,8 +75,20 @@ function App() {
           weight: data.weight || 0,
           ico: data.ico || '',
           description: data.description || '',
-          tags: data.tags || [],
         }));
+      }
+
+      // Load tags separately (converts string[] to Tag[])
+      // Normalize tags to match AVAILABLE_TAGS (case-insensitive)
+      if (data.tags && Array.isArray(data.tags)) {
+        const normalizedTags = data.tags
+          .map((tag: unknown) => {
+            if (typeof tag !== 'string') return null;
+            const lowerTag = tag.toLowerCase();
+            return AVAILABLE_TAGS.find(t => t.toLowerCase() === lowerTag) || null;
+          })
+          .filter((tag: string | null): tag is string => tag !== null);
+        dispatch(setTags(normalizedTags));
       }
 
       if (data.points) {
