@@ -95,18 +95,20 @@ export const StatsPanel: React.FC = () => {
           {customStats.length === 0 ? (
             <p className={styles.empty}>No custom stats. Click "Add Stat" to create one.</p>
           ) : (
-            customStats.map((stat) => (
-              <StatItem
-                key={stat.id}
-                id={stat.id}
-                name={stat.name}
-                value={stat.value}
-                onNameChange={handleCustomStatNameChange}
-                onValueChange={handleCustomStatValueChange}
-                onRemove={handleRemoveCustomStat}
-                isRemovable={true}
-              />
-            ))
+            customStats
+              .filter((stat): stat is typeof stat & { id: string } => stat.id !== undefined)
+              .map((stat) => (
+                <StatItem
+                  key={stat.id}
+                  id={stat.id}
+                  name={stat.name}
+                  value={stat.value}
+                  onNameChange={handleCustomStatNameChange}
+                  onValueChange={handleCustomStatValueChange}
+                  onRemove={handleRemoveCustomStat}
+                  isRemovable={true}
+                />
+              ))
           )}
         </div>
       </div>

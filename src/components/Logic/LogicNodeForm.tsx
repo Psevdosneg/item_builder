@@ -131,6 +131,29 @@ export const LogicNodeForm: React.FC<LogicNodeFormProps> = ({ nodeId }) => {
     return colors[type] || '#888';
   };
 
+  // Get subtype from node data based on node type
+  const getNodeSubtype = (): string | null => {
+    const data = node.data as Record<string, unknown>;
+    if (!data) return null;
+
+    switch (node.nodeType) {
+      case 'trigger':
+        return data.triggerType as string || null;
+      case 'checker':
+        return data.checkerType as string || null;
+      case 'activator':
+        return data.activatorType as string || null;
+      case 'aura':
+        return data.effectType as string || null;
+      case 'conditional':
+        return data.conditionalType as string || null;
+      case 'counter':
+        return (data.counterType || data.type) as string || null;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className={styles.form}>
       {/* Header with type selector */}
@@ -203,7 +226,7 @@ export const LogicNodeForm: React.FC<LogicNodeFormProps> = ({ nodeId }) => {
             JSON Data
           </span>
           <span className={styles.jsonPreview}>
-            {isJsonCollapsed && node.data?.type ? `type: "${node.data.type}"` : ''}
+            {isJsonCollapsed && getNodeSubtype() ? `${node.nodeType}Type: "${getNodeSubtype()}"` : ''}
           </span>
         </button>
 

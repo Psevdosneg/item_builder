@@ -86,16 +86,16 @@ const logicSlice = createSlice({
         ) => {
           for (const childPreset of children) {
             const childId = generateNodeId();
-            const childNode: LogicNodeState = {
+            const childNode = {
               id: childId,
               nodeType: childPreset.nodeType,
               data: childPreset.data,
-              childIds: [],
+              childIds: [] as string[],
               parentId: currentParentId,
               isCollapsed: false,
               isValid: true,
               validationError: null,
-            } as LogicNodeState;
+            } as unknown as LogicNodeState;
 
             state.nodes[childId] = childNode;
             state.nodes[currentParentId].childIds.push(childId);

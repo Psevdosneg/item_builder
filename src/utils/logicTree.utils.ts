@@ -207,8 +207,8 @@ export const getNodeDepth = (
   let depth = 0;
   let currentId: string | null = nodeId;
 
-  while (currentId) {
-    const node = nodes[currentId];
+  while (currentId !== null) {
+    const node: LogicNodeState | undefined = nodes[currentId];
     if (!node) break;
 
     if (node.parentId) {

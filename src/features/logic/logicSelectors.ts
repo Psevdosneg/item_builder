@@ -1,6 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
-import type { LogicNode } from '../../types/logic.types';
 import {
   denormalizeLogicTree,
   calculateTreeStats,

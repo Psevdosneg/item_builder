@@ -1,13 +1,4 @@
-import type {
-  NodeType,
-  LevelData,
-  TriggerNodeData,
-  CheckerNodeData,
-  ActivatorNodeData,
-  AuraNodeData,
-  ConditionalNodeData,
-  CounterNodeData,
-} from '../types/logic.types';
+import type { NodeType } from '../types/logic.types';
 
 /**
  * Validation result

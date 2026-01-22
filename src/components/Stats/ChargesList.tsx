@@ -38,17 +38,19 @@ export const ChargesList: React.FC = () => {
         {charges.length === 0 ? (
           <p className={styles.empty}>No charges defined. Click "Add Charge" to create one.</p>
         ) : (
-          charges.map((charge) => (
-            <ChargeItem
-              key={charge.id}
-              id={charge.id}
-              name={charge.name}
-              value={charge.value}
-              onNameChange={handleNameChange}
-              onValueChange={handleValueChange}
-              onRemove={handleRemove}
-            />
-          ))
+          charges
+            .filter((charge): charge is typeof charge & { id: string } => charge.id !== undefined)
+            .map((charge) => (
+              <ChargeItem
+                key={charge.id}
+                id={charge.id}
+                name={charge.name}
+                value={charge.value}
+                onNameChange={handleNameChange}
+                onValueChange={handleValueChange}
+                onRemove={handleRemove}
+              />
+            ))
         )}
       </div>
     </div>

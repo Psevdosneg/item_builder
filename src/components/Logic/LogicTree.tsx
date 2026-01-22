@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { toggleTreeView } from '../../features/logic/logicSlice';
 import { selectTreeStats } from '../../features/logic/logicSelectors';
