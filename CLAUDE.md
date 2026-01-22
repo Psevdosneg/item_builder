@@ -19,14 +19,13 @@ npm run preview  # Preview the production build locally
 
 ### State Management (Redux Toolkit)
 
-The application uses Redux Toolkit with 6 feature slices:
+The application uses Redux Toolkit with 5 feature slices:
 
 1. **item** - Basic metadata (name, weight, ico, description, tags)
 2. **grid** - Grid points stored as serialized strings ("x,y") and pivot point
 3. **stats** - Default stats (price, level, maxLevel, rarity), custom stats array, charges array
 4. **logic** - Normalized logic tree (flat Record<string, LogicNodeState>)
 5. **templates** - Saved item templates
-6. **ai** - AI generation state (modal, API key, model selection)
 
 Use typed hooks from `src/app/hooks.ts`:
 - `useAppDispatch()` instead of `useDispatch()`
@@ -115,8 +114,8 @@ JSON File → Parse → Dispatch actions (loadItem, setPoints, loadStats, loadLo
 
 **Main App Layout:**
 ```
-App (keyboard shortcuts: Ctrl+S, Ctrl+O, Ctrl+G)
-├── Action Bar (AI, Import, Templates, Clear)
+App (keyboard shortcuts: Ctrl+S, Ctrl+O, Ctrl+V)
+├── Action Bar (Import, Templates, Clear)
 ├── MainGrid
 │   ├── BasicInfoPanel
 │   └── JSONPreview (memoized)
@@ -124,7 +123,7 @@ App (keyboard shortcuts: Ctrl+S, Ctrl+O, Ctrl+G)
 └── LogicContainer
     └── LogicBuilder
         ├── LogicPresets
-        └── LogicNode (recursive tree rendering)
+        └── LogicNode (recursive tree rendering with drag & drop)
 ```
 
 ### Validation
@@ -164,14 +163,7 @@ When updating validation:
 These are implemented in `src/App.tsx`:
 - `Ctrl+S` / `Cmd+S` - Copy JSON to clipboard
 - `Ctrl+O` / `Cmd+O` - Trigger file import
-- `Ctrl+G` / `Cmd+G` - Open AI Generator modal
-
-### AI Integration
-
-- API key stored in localStorage under `openai_api_key`
-- Supports multiple OpenAI models (gpt-4o-mini, gpt-4o, gpt-4-turbo)
-- State managed in `src/features/ai/aiSlice.ts`
-- Async calls in `src/features/ai/aiThunks.ts`
+- `Ctrl+V` / `Cmd+V` - Paste JSON from clipboard
 
 ## Common Development Scenarios
 

@@ -177,5 +177,61 @@
           }
       ]
     }
+  },
+  {
+    "name": "addItemStateTag",
+    "description": "Restore health to target",
+    "data": {
+              "activatorType": "addItemStateTag",
+              "data": [
+                  {
+                      "level": 0,
+                      "data": {
+                          "tags": [
+                              {
+                                  "time": 2,
+                                  "tag": "slowed"
+                              }
+                          ]
+                      }
+                  }
+              ]
+          }
+  },
+  {
+    "name": "deleteItemStateTag",
+    "description": "Restore health to target",
+    "data": {
+            "activatorType": "deleteItemStateTag",
+            "data": [
+                {
+                    "level": 0,
+                    "data": {
+                        "tags": [
+                            {
+                                "tag": "slowed"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+  },
+  {
+    "name": "consumeResource",
+    "description": "Restore health to target",
+    "data": {
+                "activatorType": "consumeResource",
+                "data": {
+                    "resource": "bleed"
+                }
+            }
+  },
+  {
+    "name": "forceActivateItem",
+    "description": "Restore health to target",
+    "data": {
+              "activatorType": "forceActivateItem"
+            }
   }
 ]

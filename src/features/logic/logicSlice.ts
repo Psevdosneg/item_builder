@@ -17,6 +17,7 @@ import {
   normalizeLogicTree,
   copyNodeWithChildren,
   getAllDescendantIds,
+  isValidDropTarget,
 } from '../../utils/logicTree.utils';
 import { validateNodeData } from '../../services/validation.service';
 
@@ -331,6 +332,52 @@ const logicSlice = createSlice({
 
     // Reset logic
     resetLogic: () => initialState,
+
+    // Move node to a new parent or reorder within same parent
+    moveNode: (
+      state,
+      action: PayloadAction<{
+        nodeId: string;
+        newParentId: string | null;
+        newIndex: number;
+      }>
+    ) => {
+      const { nodeId, newParentId, newIndex } = action.payload;
+      const node = state.nodes[nodeId];
+
+      if (!node) return;
+
+      // Validate the drop target
+      if (!isValidDropTarget(state.nodes, nodeId, newParentId)) {
+        return;
+      }
+
+      const oldParentId = node.parentId;
+
+      // 1. Remove from old parent's childIds or rootNodeIds
+      if (oldParentId && state.nodes[oldParentId]) {
+        state.nodes[oldParentId].childIds = state.nodes[oldParentId].childIds.filter(
+          (id) => id !== nodeId
+        );
+      } else {
+        // Was a root node
+        state.rootNodeIds = state.rootNodeIds.filter((id) => id !== nodeId);
+      }
+
+      // 2. Update node's parentId
+      node.parentId = newParentId;
+
+      // 3. Insert into new parent's childIds or rootNodeIds at the specified index
+      if (newParentId && state.nodes[newParentId]) {
+        const newParent = state.nodes[newParentId];
+        const safeIndex = Math.min(Math.max(0, newIndex), newParent.childIds.length);
+        newParent.childIds.splice(safeIndex, 0, nodeId);
+      } else {
+        // Moving to root level
+        const safeIndex = Math.min(Math.max(0, newIndex), state.rootNodeIds.length);
+        state.rootNodeIds.splice(safeIndex, 0, nodeId);
+      }
+    },
   },
 });
 
@@ -352,6 +399,7 @@ export const {
   collapseAllTreeNodes,
   expandAllTreeNodes,
   resetLogic,
+  moveNode,
 } = logicSlice.actions;
 
 export default logicSlice.reducer;

@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from './app/hooks';
-import { loadApiKeyFromStorage, openModal } from './features/ai/aiSlice';
 import { loadItem } from './features/item/itemSlice';
 import { setPoints, setPivot } from './features/grid/gridSlice';
 import { loadStats } from './features/stats/statsSlice';
@@ -11,7 +10,6 @@ import { StatsContainer } from './containers/StatsContainer';
 import { LogicContainer } from './containers/LogicContainer';
 import { DrawersContainer } from './containers/DrawersContainer';
 import { JSONPreview } from './containers/JSONPreview';
-import { AIModal } from './components/AI';
 import { Button } from './components/common/Button';
 import { generateJSONString, copyJSONToClipboard } from './utils/json.utils';
 import styles from './App.module.css';
@@ -20,11 +18,6 @@ function App() {
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    // Load API key from localStorage on mount
-    dispatch(loadApiKeyFromStorage());
-  }, [dispatch]);
 
   // Keyboard shortcuts
   useEffect(() => {
@@ -45,12 +38,6 @@ function App() {
       if ((e.ctrlKey || e.metaKey) && e.key === 'o') {
         e.preventDefault();
         fileInputRef.current?.click();
-      }
-
-      // Ctrl+G or Cmd+G: Open AI modal
-      if ((e.ctrlKey || e.metaKey) && e.key === 'g') {
-        e.preventDefault();
-        dispatch(openModal());
       }
 
       // Ctrl+V or Cmd+V: Paste JSON from clipboard (only if not in input/textarea)
@@ -75,10 +62,6 @@ function App() {
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [state, dispatch]);
-
-  const handleOpenAI = () => {
-    dispatch(openModal());
-  };
 
   const importJSONData = (jsonString: string, source: string) => {
     try {
@@ -183,9 +166,6 @@ function App() {
 
       <div className={styles.content}>
         <div className={styles.actionsBar}>
-          <Button onClick={handleOpenAI}>
-            AI Generate (Ctrl+G)
-          </Button>
           <Button variant="secondary" onClick={() => fileInputRef.current?.click()}>
             Import File (Ctrl+O)
           </Button>
@@ -217,8 +197,6 @@ function App() {
         <DrawersContainer />
         <LogicContainer />
       </div>
-
-      <AIModal />
     </div>
   );
 }

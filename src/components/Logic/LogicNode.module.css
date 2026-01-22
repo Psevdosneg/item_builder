@@ -155,3 +155,162 @@
 .nodeWrapper[data-depth='9'] .node {
   border-left: 4px solid #ffff00;
 }
+
+/* Drag and Drop Styles */
+
+.dragHandle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-size: 16px;
+  cursor: grab;
+  transition: all 0.2s ease;
+  padding: 0;
+  line-height: 1;
+}
+
+.dragHandle:hover {
+  background: rgba(0, 255, 136, 0.1);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.dragHandle:active {
+  cursor: grabbing;
+}
+
+/* Dragging state */
+.nodeWrapper.dragging {
+  opacity: 0.5;
+}
+
+.nodeWrapper.dragging .node {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+/* Valid drop target (node) */
+.node.validDropTarget {
+  border-color: var(--accent-primary) !important;
+  background: rgba(0, 255, 136, 0.05);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+/* Invalid drop target (node) */
+.node.invalidDropTarget {
+  border-color: var(--accent-danger, #ff4444) !important;
+  background: rgba(255, 68, 68, 0.05);
+  box-shadow: 0 0 20px rgba(255, 68, 68, 0.3);
+}
+
+/* Drop zone between nodes */
+.dropZone {
+  height: 8px;
+  margin: 4px 0;
+  border-radius: 4px;
+  background: transparent;
+  border: 2px dashed transparent;
+  transition: all 0.2s ease;
+}
+
+.dropZone.dropZoneValid {
+  height: 40px;
+  background: rgba(0, 255, 136, 0.1);
+  border-color: var(--accent-primary);
+}
+
+.dropZone.dropZoneInvalid {
+  height: 40px;
+  background: rgba(255, 68, 68, 0.1);
+  border-color: var(--accent-danger, #ff4444);
+}
+
+.dropZoneIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent-primary);
+}
+
+.dropZone.dropZoneInvalid .dropZoneIndicator {
+  color: var(--accent-danger, #ff4444);
+}
+
+/* Drop zone for adding as child */
+.dropZoneChild {
+  margin-top: 12px;
+  padding: 12px;
+  border: 2px dashed var(--border-color);
+  border-radius: 6px;
+  background: rgba(0, 255, 136, 0.03);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.dropZoneChild:hover {
+  border-color: var(--accent-primary);
+  background: rgba(0, 255, 136, 0.08);
+}
+
+.dropZoneChildText {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.dropZoneChild.dropZoneChildValid {
+  border-color: var(--accent-primary);
+  background: rgba(0, 255, 136, 0.15);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+}
+
+.dropZoneChild.dropZoneChildValid .dropZoneChildText {
+  color: var(--accent-primary);
+}
+
+.dropZoneChild.dropZoneChildInvalid {
+  border-color: var(--accent-danger, #ff4444);
+  background: rgba(255, 68, 68, 0.1);
+}
+
+.dropZoneChild.dropZoneChildInvalid .dropZoneChildText {
+  color: var(--accent-danger, #ff4444);
+}
+
+/* Global drag preview styles */
+:global(.drag-preview) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--accent-primary);
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  font-size: 13px;
+}
+
+:global(.drag-preview-type) {
+  padding: 2px 8px;
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+:global(.drag-preview-id) {
+  color: var(--text-secondary);
+  font-family: monospace;
+  font-size: 11px;
+}

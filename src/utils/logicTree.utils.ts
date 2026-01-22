@@ -3,7 +3,6 @@ import type {
   LogicNodeState,
   NormalizedLogicState,
   TreeStats,
-  NodeType,
 } from '../types/logic.types';
 
 /**
@@ -326,4 +325,44 @@ export const parsePoint = (pointStr: string): { x: number; y: number } => {
  */
 export const stringifyPoint = (point: { x: number; y: number }): string => {
   return `${point.x},${point.y}`;
+};
+
+/**
+ * Check if targetId is a descendant of sourceId
+ * Used to prevent dropping a node onto its own descendant (would create a cycle)
+ */
+export const isDescendantOf = (
+  nodes: Record<string, LogicNodeState>,
+  sourceId: string,
+  targetId: string
+): boolean => {
+  if (sourceId === targetId) return true;
+
+  const descendants = getAllDescendantIds(nodes, sourceId);
+  return descendants.includes(targetId);
+};
+
+/**
+ * Check if a drop target is valid for the dragged node
+ * Invalid if:
+ * - Target is the same as source
+ * - Target is a descendant of source (would create cycle)
+ * - Target is the current parent (no change needed, unless reordering)
+ */
+export const isValidDropTarget = (
+  nodes: Record<string, LogicNodeState>,
+  draggedId: string,
+  targetId: string | null,
+  _newIndex?: number
+): boolean => {
+  // Can always drop to root level (targetId = null)
+  if (targetId === null) return true;
+
+  // Cannot drop on itself
+  if (draggedId === targetId) return false;
+
+  // Cannot drop on a descendant (would create a cycle)
+  if (isDescendantOf(nodes, draggedId, targetId)) return false;
+
+  return true;
 };

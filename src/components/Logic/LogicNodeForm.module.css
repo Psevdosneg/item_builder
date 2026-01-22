@@ -47,10 +47,62 @@
   font-weight: 500;
 }
 
+.jsonSection {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.jsonToggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--bg-primary);
+  border: none;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  text-align: left;
+}
+
+.jsonToggle:hover {
+  background: rgba(0, 255, 136, 0.05);
+}
+
+.toggleArrow {
+  font-size: 10px;
+  color: var(--accent-primary);
+  transition: transform 0.2s ease;
+}
+
+.toggleArrow.collapsed {
+  transform: rotate(-90deg);
+}
+
+.toggleLabel {
+  color: var(--text-secondary);
+}
+
+.jsonPreview {
+  margin-left: auto;
+  font-family: monospace;
+  font-size: 11px;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .dataDisplay {
   padding: 12px;
   background: rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  border-top: 1px solid var(--border-color);
   overflow: auto;
 }
 

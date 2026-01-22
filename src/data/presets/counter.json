@@ -2,32 +2,101 @@
   {
     "name": "resources counter",
     "description": "Count specific resource amount",
-    "data": {
-							"type": "resources",
-							"data": 
+    "data":
               {
-                "type": "resources",
+                "counterType": "resources",
                 "data": {
                     "resourceId": "rage"
                 }
 							}
-						}
-  },
+	},
   {
     "name": "character Counter",
     "description": "Count characters",
     "data": {
-							"type": "character"
+							"counterType": "character"
 						}
   },
   {
     "name": "items Counter",
     "description": "Count items ",
     "data": {
-              "type": "item",
+              "counterType": "item",
               "data": {
                   "includeDestroyed": false
               }
 						}
+  },
+  {
+    "name": "powers Counter",
+    "description": "Count items ",
+    "data": {
+              "counterType": "resources",
+              "data": {
+                "resourceId": "rage",
+                "powers": [ 
+                  {
+                    "level": 0,
+                    "data": 0.5
+                  },
+                  {
+                    "level": 1,
+                    "data": 0.5
+                  },
+                  {
+                    "level": 2,
+                    "data": 0.5
+                  }
+                ]
+              }
+            }
+  },
+  {
+    "name": "statistic Counter",
+    "description": "Count items ",
+    "data": {
+                "counterType": "statistic",
+                "data": {
+                    "stat": "minionsSpawned",
+                    "powers": [
+                        {
+                            "level": 0,
+                            "data": 1
+                        },
+                        {
+                            "level": 1,
+                            "data": 1
+                        },
+                        {
+                            "level": 2,
+                            "data": 1
+                        }
+                    ]
+                }
+            }
+  },
+  {
+    "name": "itemStat Counter",
+    "description": "Count items ",
+    "data": {
+                "counterType": "statistic",
+                "data": {
+                          "StatId": "damage",
+                          "powers": [
+                            {
+                              "level": 0,
+                              "data": 0.1
+                            },
+                            {
+                              "level": 1,
+                              "data": 0.1
+                            },
+                            {
+                              "level": 2,
+                              "data": 0.1
+                            }
+                          ]
+                        }
+            }
   }
 ]

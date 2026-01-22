@@ -4,7 +4,6 @@ import gridReducer from '../features/grid/gridSlice';
 import statsReducer from '../features/stats/statsSlice';
 import logicReducer from '../features/logic/logicSlice';
 import templatesReducer from '../features/templates/templatesSlice';
-import aiReducer from '../features/ai/aiSlice';
 import drawersReducer from '../features/drawers/drawersSlice';
 
 export const store = configureStore({
@@ -14,7 +13,6 @@ export const store = configureStore({
     stats: statsReducer,
     logic: logicReducer,
     templates: templatesReducer,
-    ai: aiReducer,
     drawers: drawersReducer,
   },
   middleware: (getDefaultMiddleware) =>

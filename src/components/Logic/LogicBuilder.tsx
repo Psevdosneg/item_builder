@@ -1,11 +1,47 @@
 import React from 'react';
+import { useDroppable } from '@dnd-kit/core';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addNode, collapseAllNodes, expandAllNodes } from '../../features/logic/logicSlice';
 import { LogicNode } from './LogicNode';
+import { LogicDndProvider, useLogicDnd } from './DndContext';
+import { isValidDropTarget } from '../../utils/logicTree.utils';
 import { Button } from '../common/Button';
 import styles from './LogicBuilder.module.css';
 
-export const LogicBuilder: React.FC = () => {
+// Drop zone component for adding at the end of root nodes
+const DropZoneAtEnd: React.FC = () => {
+  const { dragState, isDragging } = useLogicDnd();
+  const nodes = useAppSelector((state) => state.logic.nodes);
+  const rootNodeIds = useAppSelector((state) => state.logic.rootNodeIds);
+
+  const dropzoneId = `dropzone-root-${rootNodeIds.length}`;
+
+  const { setNodeRef, isOver } = useDroppable({
+    id: dropzoneId,
+  });
+
+  if (!isDragging) return null;
+
+  const isValid = dragState.activeId
+    ? isValidDropTarget(nodes, dragState.activeId, null)
+    : false;
+
+  return (
+    <div
+      ref={setNodeRef}
+      className={`${styles.dropZoneEnd} ${isOver ? (isValid ? styles.dropZoneEndValid : styles.dropZoneEndInvalid) : ''}`}
+    >
+      {isOver && (
+        <div className={styles.dropZoneIndicator}>
+          {isValid ? 'Drop here' : 'Invalid'}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Internal component with the actual logic
+const LogicBuilderContent: React.FC = () => {
   const dispatch = useAppDispatch();
   const { rootNodeIds, nodes } = useAppSelector((state) => state.logic);
 
@@ -63,12 +99,23 @@ export const LogicBuilder: React.FC = () => {
           </div>
         ) : (
           <div className={styles.nodes}>
-            {rootNodeIds.map((nodeId) => (
-              <LogicNode key={nodeId} nodeId={nodeId} depth={0} />
+            {rootNodeIds.map((nodeId, index) => (
+              <LogicNode key={nodeId} nodeId={nodeId} depth={0} index={index} />
             ))}
+            {/* Drop zone at the end of root nodes */}
+            <DropZoneAtEnd />
           </div>
         )}
       </div>
     </div>
+  );
+};
+
+// Main component wrapped with DndProvider
+export const LogicBuilder: React.FC = () => {
+  return (
+    <LogicDndProvider>
+      <LogicBuilderContent />
+    </LogicDndProvider>
   );
 };

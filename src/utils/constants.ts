@@ -60,9 +60,6 @@ export const CONDITIONAL_TYPES = [
   'itemRandom',
 ] as const;
 
-// AI Models
-export const AI_MODELS = ['gpt-4o-mini', 'gpt-4o', 'gpt-4-turbo'] as const;
-
 // Available stat names for dropdown selection
 export const STAT_NAMES = [
   'cooldown',

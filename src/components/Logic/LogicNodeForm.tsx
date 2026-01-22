@@ -31,6 +31,7 @@ export const LogicNodeForm: React.FC<LogicNodeFormProps> = ({ nodeId }) => {
   const [isValidationSuccess, setIsValidationSuccess] = useState<boolean>(false);
   const [localJsonText, setLocalJsonText] = useState<string>('');
   const [selectedPreset, setSelectedPreset] = useState<string>('');
+  const [isJsonCollapsed, setIsJsonCollapsed] = useState<boolean>(true);
 
   // Get presets for current node type
   const presets = useMemo(() => {
@@ -188,16 +189,36 @@ export const LogicNodeForm: React.FC<LogicNodeFormProps> = ({ nodeId }) => {
         )}
       </div>
 
-      {/* JSON editor */}
-      <div className={styles.dataDisplay}>
-        <Textarea
-          value={localJsonText}
-          onChange={(e) => handleJsonChange(e.target.value)}
-          placeholder="Enter node data as JSON"
-          rows={12}
-          fullWidth
-          style={{ fontFamily: 'monospace' }}
-        />
+      {/* JSON editor - collapsible */}
+      <div className={styles.jsonSection}>
+        <button
+          className={styles.jsonToggle}
+          onClick={() => setIsJsonCollapsed(!isJsonCollapsed)}
+          type="button"
+        >
+          <span className={`${styles.toggleArrow} ${isJsonCollapsed ? styles.collapsed : ''}`}>
+            &#x25BC;
+          </span>
+          <span className={styles.toggleLabel}>
+            JSON Data
+          </span>
+          <span className={styles.jsonPreview}>
+            {isJsonCollapsed && node.data?.type ? `type: "${node.data.type}"` : ''}
+          </span>
+        </button>
+
+        {!isJsonCollapsed && (
+          <div className={styles.dataDisplay}>
+            <Textarea
+              value={localJsonText}
+              onChange={(e) => handleJsonChange(e.target.value)}
+              placeholder="Enter node data as JSON"
+              rows={12}
+              fullWidth
+              style={{ fontFamily: 'monospace' }}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
