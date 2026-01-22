@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { loadItem } from './features/item/itemSlice';
 import { setPoints, setPivot } from './features/grid/gridSlice';
-import { loadStats } from './features/stats/statsSlice';
+import { loadStatsData } from './features/stats/statsSlice';
 import { loadLogicTree } from './features/logic/logicSlice';
 import { loadDrawers } from './features/drawers/drawersSlice';
 import { BasicInfoPanel } from './containers/BasicInfoPanel';
@@ -91,20 +91,8 @@ function App() {
       }
 
       if (data.stats || data.charges) {
-        const defaultStats = {
-          price: data.stats?.find((s: any) => s.name === 'price')?.value || 0,
-          level: data.stats?.find((s: any) => s.name === 'level')?.value || 0,
-          maxLevel: data.stats?.find((s: any) => s.name === 'maxLevel')?.value || 0,
-          rarity: data.stats?.find((s: any) => s.name === 'rarity')?.value || 0,
-        };
-
-        const customStats = data.stats?.filter(
-          (s: any) => !['price', 'level', 'maxLevel', 'rarity'].includes(s.name)
-        ) || [];
-
-        dispatch(loadStats({
-          defaultStats,
-          customStats,
+        dispatch(loadStatsData({
+          stats: data.stats || [],
           charges: data.charges || [],
         }));
       }

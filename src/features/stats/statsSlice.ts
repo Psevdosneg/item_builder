@@ -132,25 +132,4 @@ export const {
   resetStats,
 } = statsSlice.actions;
 
-// Export alias for consistency
-export const loadStats = (payload: Partial<StatsState>) => {
-  return (dispatch: any) => {
-    if (payload.defaultStats) {
-      Object.entries(payload.defaultStats).forEach(([key, value]) => {
-        dispatch(setDefaultStat({ key: key as keyof DefaultStats, value }));
-      });
-    }
-    if (payload.customStats) {
-      payload.customStats.forEach((stat) => {
-        dispatch(addCustomStat({ name: stat.name, value: stat.value }));
-      });
-    }
-    if (payload.charges) {
-      payload.charges.forEach((charge) => {
-        dispatch(addCharge({ name: charge.name, value: charge.value }));
-      });
-    }
-  };
-};
-
 export default statsSlice.reducer;
