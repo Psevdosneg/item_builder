@@ -49,6 +49,33 @@
       }
   },
   {
+    "name": "itemRandom",
+    "description": "Select random item",
+    "data": {
+      "conditionalType": "itemRandom",
+        "data": [
+            {
+                "level": 0,
+                "data": {
+                    "count": 1
+                }
+            },
+            {
+                "level": 1,
+                "data": {
+                    "count": 1
+                }
+            },
+            {
+                "level": 2,
+                "data": {
+                    "count": 1
+                }
+            }
+        ]
+      }
+  },
+  {
     "name": "Character Tag",
     "description": "Target characters with specific tag",
     "data": {

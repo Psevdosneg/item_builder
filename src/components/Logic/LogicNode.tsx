@@ -7,6 +7,7 @@ import {
   toggleNodeCollapse,
   copyNode,
 } from '../../features/logic/logicSlice';
+import { useNotification } from '../../contexts/NotificationContext';
 import { LogicNodeForm } from './LogicNodeForm';
 import { Button } from '../common/Button';
 import { useLogicDnd } from './DndContext';
@@ -94,6 +95,7 @@ export const LogicNode: React.FC<LogicNodeProps> = ({ nodeId, depth, index }) =>
   const dispatch = useAppDispatch();
   const node = useAppSelector((state) => state.logic.nodes[nodeId]);
   const { dragState, isDragging } = useLogicDnd();
+  const { showConfirm } = useNotification();
 
   const {
     attributes,
@@ -110,9 +112,11 @@ export const LogicNode: React.FC<LogicNodeProps> = ({ nodeId, depth, index }) =>
   const isCollapsed = node.isCollapsed;
 
   const handleRemove = () => {
-    if (window.confirm('Remove this node and all its children?')) {
-      dispatch(removeNode(nodeId));
-    }
+    showConfirm(
+      'Remove this node and all its children?',
+      () => dispatch(removeNode(nodeId)),
+      { confirmText: 'Remove', variant: 'danger' }
+    );
   };
 
   const handleAddChild = () => {

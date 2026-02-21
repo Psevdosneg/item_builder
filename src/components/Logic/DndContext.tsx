@@ -86,8 +86,12 @@ export const LogicDndProvider: React.FC<LogicDndProviderProps> = ({ children }) 
 
       if (isDropZone) {
         // Parse dropzone ID: "dropzone-{parentId|root}-{index}"
-        const parts = overId.split('-');
-        targetParentId = parts[1] === 'root' ? null : parts[1];
+        // parentId can contain dashes (e.g., "node-5"), so we need to parse carefully
+        // Format: "dropzone-root-{index}" or "dropzone-{parentId}-{index}"
+        const lastDashIndex = overId.lastIndexOf('-');
+        const prefix = overId.substring(0, lastDashIndex); // "dropzone-root" or "dropzone-node-5"
+        const parentPart = prefix.substring('dropzone-'.length); // "root" or "node-5"
+        targetParentId = parentPart === 'root' ? null : parentPart;
       } else {
         // Dropping directly on a node makes it a child of that node
         targetParentId = overId;
@@ -124,9 +128,13 @@ export const LogicDndProvider: React.FC<LogicDndProviderProps> = ({ children }) 
 
       if (isDropZone) {
         // Parse dropzone ID: "dropzone-{parentId|root}-{index}"
-        const parts = overId.split('-');
-        newParentId = parts[1] === 'root' ? null : parts[1];
-        newIndex = parseInt(parts[2], 10);
+        // parentId can contain dashes (e.g., "node-5"), so we need to parse carefully
+        // Format: "dropzone-root-{index}" or "dropzone-{parentId}-{index}"
+        const lastDashIndex = overId.lastIndexOf('-');
+        const prefix = overId.substring(0, lastDashIndex); // "dropzone-root" or "dropzone-node-5"
+        const parentPart = prefix.substring('dropzone-'.length); // "root" or "node-5"
+        newParentId = parentPart === 'root' ? null : parentPart;
+        newIndex = parseInt(overId.substring(lastDashIndex + 1), 10);
       } else {
         // Dropping directly on a node - add as last child
         newParentId = overId;

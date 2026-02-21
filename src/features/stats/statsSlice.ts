@@ -4,6 +4,7 @@ import type { Stat, Charge, DefaultStats } from '../../types/stats.types';
 
 interface StatsState {
   defaultStats: DefaultStats;
+  touchedStats: Record<keyof DefaultStats, boolean>;
   customStats: Stat[];
   charges: Charge[];
 }
@@ -14,6 +15,12 @@ const initialState: StatsState = {
     level: 0,
     maxLevel: 3,
     rarity: 0,
+  },
+  touchedStats: {
+    price: false,
+    level: false,
+    maxLevel: false,
+    rarity: false,
   },
   customStats: [],
   charges: [],
@@ -35,6 +42,7 @@ const statsSlice = createSlice({
     ) => {
       const { key, value } = action.payload;
       state.defaultStats[key] = value;
+      state.touchedStats[key] = true;
     },
     addCustomStat: (state, action: PayloadAction<Omit<Stat, 'id'>>) => {
       state.customStats.push({
@@ -85,6 +93,7 @@ const statsSlice = createSlice({
 
       // Reset to defaults
       state.defaultStats = { price: 10, level: 0, maxLevel: 3, rarity: 0 };
+      state.touchedStats = { price: false, level: false, maxLevel: false, rarity: false };
       state.customStats = [];
       state.charges = [];
 
@@ -93,12 +102,16 @@ const statsSlice = createSlice({
         for (const stat of stats) {
           if (stat.name === 'price') {
             state.defaultStats.price = stat.value;
+            state.touchedStats.price = true;
           } else if (stat.name === 'level') {
             state.defaultStats.level = stat.value;
+            state.touchedStats.level = true;
           } else if (stat.name === 'maxLevel') {
             state.defaultStats.maxLevel = stat.value;
+            state.touchedStats.maxLevel = true;
           } else if (stat.name === 'rarity') {
             state.defaultStats.rarity = stat.value;
+            state.touchedStats.rarity = true;
           } else {
             state.customStats.push({
               ...stat,

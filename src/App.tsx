@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { loadItem, setTags } from './features/item/itemSlice';
 import { AVAILABLE_TAGS } from './utils/tags';
@@ -13,58 +13,16 @@ import { DrawersContainer } from './containers/DrawersContainer';
 import { JSONPreview } from './containers/JSONPreview';
 import { Button } from './components/common/Button';
 import { generateJSONString, copyJSONToClipboard } from './utils/json.utils';
+import { useNotification } from './contexts/NotificationContext';
 import styles from './App.module.css';
 
 function App() {
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { showToast, showConfirm } = useNotification();
 
-  // Keyboard shortcuts
-  useEffect(() => {
-    const handleKeyDown = async (e: KeyboardEvent) => {
-      // Ctrl+S or Cmd+S: Copy JSON to clipboard
-      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-        e.preventDefault();
-        try {
-          const jsonString = generateJSONString(state);
-          await copyJSONToClipboard(jsonString);
-          alert('JSON copied to clipboard!');
-        } catch (error) {
-          alert('Failed to copy JSON');
-        }
-      }
-
-      // Ctrl+O or Cmd+O: Open file import dialog
-      if ((e.ctrlKey || e.metaKey) && e.key === 'o') {
-        e.preventDefault();
-        fileInputRef.current?.click();
-      }
-
-      // Ctrl+V or Cmd+V: Paste JSON from clipboard (only if not in input/textarea)
-      if ((e.ctrlKey || e.metaKey) && e.key === 'v') {
-        const activeElement = document.activeElement;
-        const isInputFocused = activeElement instanceof HTMLInputElement ||
-          activeElement instanceof HTMLTextAreaElement;
-
-        if (!isInputFocused) {
-          e.preventDefault();
-          navigator.clipboard.readText().then((text) => {
-            if (text.trim()) {
-              importJSONData(text, 'JSON from clipboard');
-            }
-          }).catch(() => {
-            // Ignore clipboard errors for paste shortcut
-          });
-        }
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [state, dispatch]);
-
-  const importJSONData = (jsonString: string, source: string) => {
+  const importJSONData = useCallback((jsonString: string, source: string) => {
     try {
       const data = JSON.parse(jsonString);
 
@@ -118,12 +76,12 @@ function App() {
         dispatch(loadDrawers(data.drawers));
       }
 
-      alert(`${source} imported successfully!`);
+      showToast(`${source} imported successfully!`, 'success');
     } catch (error) {
       console.error('Import error:', error);
-      alert(`Failed to import ${source.toLowerCase()}. Invalid JSON format.`);
+      showToast(`Failed to import ${source.toLowerCase()}. Invalid JSON format.`, 'error');
     }
-  };
+  }, [dispatch, showToast]);
 
   const handleFileImport = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -138,25 +96,65 @@ function App() {
     e.target.value = ''; // Reset input
   };
 
-  const handlePasteJSON = async () => {
+  const handlePasteJSON = useCallback(async () => {
     try {
       const text = await navigator.clipboard.readText();
       if (!text.trim()) {
-        alert('Clipboard is empty');
+        showToast('Clipboard is empty', 'info');
         return;
       }
       importJSONData(text, 'JSON from clipboard');
     } catch (error) {
       console.error('Paste error:', error);
-      alert('Failed to read clipboard. Please allow clipboard access.');
+      showToast('Failed to read clipboard. Please allow clipboard access.', 'error');
     }
-  };
+  }, [importJSONData, showToast]);
 
-  const handleClearAll = () => {
-    if (window.confirm('Clear all data? This cannot be undone.')) {
-      window.location.reload();
-    }
-  };
+  const handleClearAll = useCallback(() => {
+    showConfirm(
+      'Clear all data? This cannot be undone.',
+      () => window.location.reload(),
+      { confirmText: 'Clear', variant: 'danger' }
+    );
+  }, [showConfirm]);
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = async (e: KeyboardEvent) => {
+      // Ctrl+S or Cmd+S: Copy JSON to clipboard
+      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        e.preventDefault();
+        try {
+          const jsonString = generateJSONString(state);
+          await copyJSONToClipboard(jsonString);
+          showToast('JSON copied to clipboard!', 'success');
+        } catch {
+          showToast('Failed to copy JSON', 'error');
+        }
+      }
+
+      // Ctrl+O or Cmd+O: Open file import dialog
+      if ((e.ctrlKey || e.metaKey) && e.key === 'o') {
+        e.preventDefault();
+        fileInputRef.current?.click();
+      }
+
+      // Ctrl+V or Cmd+V: Paste JSON from clipboard (only if not in input/textarea)
+      if ((e.ctrlKey || e.metaKey) && e.key === 'v') {
+        const activeElement = document.activeElement;
+        const isInputFocused = activeElement instanceof HTMLInputElement ||
+          activeElement instanceof HTMLTextAreaElement;
+
+        if (!isInputFocused) {
+          e.preventDefault();
+          handlePasteJSON();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [state, showToast, handlePasteJSON]);
 
   return (
     <div className={styles.app}>

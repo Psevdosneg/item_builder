@@ -1,5 +1,5 @@
 // Grid configuration
-export const GRID_SIZE = 5;
+export const GRID_SIZE = 8;
 
 // Available tags for items (imported from presets for backward compatibility)
 export { AVAILABLE_TAGS } from './tags';
@@ -60,15 +60,8 @@ export const CONDITIONAL_TYPES = [
   'itemRandom',
 ] as const;
 
-// Available stat names for dropdown selection
-export const STAT_NAMES = [
-  'cooldown',
-  'collectedTime',
-  'damage',
-  'heal',
-  'multicast',
-  'spawnedCrips',
-] as const;
+// Available stat names for dropdown selection (imported from presets for backward compatibility)
+export { STAT_NAMES } from './stats';
 
 // Node type colors for UI
 export const NODE_TYPE_COLORS: Record<string, string> = {

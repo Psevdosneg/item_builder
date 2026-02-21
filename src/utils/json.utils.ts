@@ -9,14 +9,24 @@ export function generateItemFromState(state: RootState): Item {
   // Parse grid points
   const points: GridPoint[] = state.grid.points.map(parsePoint);
 
-  // Collect all stats
-  const stats = [
-    { name: 'price', value: state.stats.defaultStats.price },
-    { name: 'level', value: state.stats.defaultStats.level },
-    { name: 'maxLevel', value: state.stats.defaultStats.maxLevel },
-    { name: 'rarity', value: state.stats.defaultStats.rarity },
-    ...state.stats.customStats.map((s) => ({ name: s.name, value: s.value })),
-  ];
+  // Collect only touched default stats + custom stats
+  const stats: Array<{ name: string; value: number }> = [];
+
+  if (state.stats.touchedStats.price) {
+    stats.push({ name: 'price', value: state.stats.defaultStats.price });
+  }
+  if (state.stats.touchedStats.level) {
+    stats.push({ name: 'level', value: state.stats.defaultStats.level });
+  }
+  if (state.stats.touchedStats.maxLevel) {
+    stats.push({ name: 'maxLevel', value: state.stats.defaultStats.maxLevel });
+  }
+  if (state.stats.touchedStats.rarity) {
+    stats.push({ name: 'rarity', value: state.stats.defaultStats.rarity });
+  }
+
+  // Add custom stats
+  stats.push(...state.stats.customStats.map((s) => ({ name: s.name, value: s.value })));
 
   // Get denormalized logic tree
   const logic =
@@ -31,10 +41,13 @@ export function generateItemFromState(state: RootState): Item {
     description: state.item.description,
     points,
     tags: state.item.tags.map(tag => tag.value),
-    stats,
   };
 
   // Add optional fields
+  if (stats.length > 0) {
+    item.stats = stats;
+  }
+
   if (state.stats.charges.length > 0) {
     item.charges = state.stats.charges.map((c) => ({ name: c.name, value: c.value }));
   }

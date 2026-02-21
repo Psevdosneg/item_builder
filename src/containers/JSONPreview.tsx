@@ -1,11 +1,13 @@
 import React, { useMemo } from 'react';
 import { useAppSelector } from '../app/hooks';
 import { generateJSONString, copyJSONToClipboard, downloadJSON } from '../utils/json.utils';
+import { useNotification } from '../contexts/NotificationContext';
 import { Button } from '../components/common/Button';
 import styles from './JSONPreview.module.css';
 
 export const JSONPreview: React.FC = () => {
   const state = useAppSelector((state) => state);
+  const { showToast } = useNotification();
 
   const jsonString = useMemo(() => {
     return generateJSONString(state);
@@ -14,9 +16,9 @@ export const JSONPreview: React.FC = () => {
   const handleCopy = async () => {
     try {
       await copyJSONToClipboard(jsonString);
-      alert('Copied to clipboard!');
-    } catch (error) {
-      alert('Failed to copy');
+      showToast('Copied to clipboard!', 'success');
+    } catch {
+      showToast('Failed to copy', 'error');
     }
   };
 

@@ -1,14 +1,14 @@
 [
   {
     "name": "damage",
-    "description": "Deal damage to target",
+    "description": "",
     "data": {
       "activatorType": "damage"
     }
   },
   {
     "name": "changeResource",
-    "description": "Modify target's resources",
+    "description": "",
     "data": {
             "activatorType": "changeResource",
             "data": 
@@ -42,7 +42,7 @@
   },
   {
     "name": "consumeResource",
-    "description": "Modify target's resources",
+    "description": "",
     "data": {
             "activatorType": "consumeResource",
             "data": 
@@ -116,7 +116,7 @@
   },
   {
     "name": "impulseItem",
-    "description": "Add charges to item",
+    "description": "",
     "data": {
 							"activatorType": "impulseItem",
 							"data": [
@@ -152,7 +152,7 @@
     "name": "changeItemCharge",
     "description": "",
     "data": {
-      "activatorType": "changeItemCharge",
+      "activatorType": "",
       "data": [
           {
               "level": 0,
@@ -200,7 +200,7 @@
   },
   {
     "name": "deleteItemStateTag",
-    "description": "Restore health to target",
+    "description": "",
     "data": {
             "activatorType": "deleteItemStateTag",
             "data": [
@@ -219,7 +219,7 @@
   },
   {
     "name": "consumeResource",
-    "description": "Restore health to target",
+    "description": "",
     "data": {
                 "activatorType": "consumeResource",
                 "data": {
@@ -229,9 +229,57 @@
   },
   {
     "name": "forceActivateItem",
-    "description": "Restore health to target",
+    "description": "",
     "data": {
               "activatorType": "forceActivateItem"
             }
+  },
+  {
+    "name": "addItemModificator",
+    "description": "",
+    "data": {
+            "activatorType": "addItemModificator",
+            "data": [
+                {
+                    "level": 0,
+                    "data": {
+                        "stat": "addedDamage",
+                        "value": 10
+                    }
+                },
+                {
+                    "level": 1,
+                    "data": {
+                        "stat": "addedDamage",
+                        "value": 20
+                    }
+                },
+                {
+                    "level": 2,
+                    "data": {
+                        "stat": "addedDamage",
+                        "value": 30
+                    }
+                }
+            ]
+        }
+},
+  {
+    "name": "addItem",
+    "description": "",
+    "data": {
+              "activatorType": "addItem",
+              "data": [
+                  {
+                      "level": 0,
+                      "data": {
+                          "count": 1,
+                          "items": [
+                              "cleaver"
+                          ]
+                      }
+                  }
+              ]
+          }
   }
 ]

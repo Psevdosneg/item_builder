@@ -7,7 +7,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(5, 28px);
+  grid-template-columns: repeat(8, 28px);
   gap: 3px;
   transition: transform 0.3s ease;
 }

@@ -1,14 +1,14 @@
 [
   {
     "name": "cooldown",
-    "description": "Check if cooldown requirement is met",
+    "description": "",
     "data": {
       "checkerType": "cooldown"
     }
   },
   {
     "name": "resourcePrice",
-    "description": "Check if player has enough resources",
+    "description": "",
     "data": {
         "checkerType": "resourcePrice",
         "data": [
@@ -38,7 +38,7 @@
   },
   {
     "name": "chargePrice",
-    "description": "Check if item has enough charges",
+    "description": "",
       "data": {
           "checkerType": "chargePrice",
           "data": [
@@ -98,7 +98,7 @@
   },
   {
     "name": "Battle State Check",
-    "description": "Check current battle state",
+    "description": "",
     "data": {
       "checkerType": "battleState",
       "data": {
@@ -108,16 +108,76 @@
   },
   {
     "name": "itemConditional",
-    "description": "Check item state or tags",
+    "description": "",
     "data": {
       "checkerType": "itemConditional"
     }
   },
   {
     "name": "Crip Conditional",
-    "description": "Check crip conditions",
+    "description": "",
     "data": {
       "checkerType": "cripConditional"
     }
-  }
+  },
+  {
+    "name": "changeResource",
+    "description": "",
+    "data": {
+            "checkerType": "changeResource",
+            "data": [
+                {
+                    "level": 0,
+                    "data": {
+                        "resource": "shield",
+                        "mode": "less",
+                        "delta": 0
+                    }
+                }
+            ]
+        }
+  },
+  {
+    "name": "changeTag",
+    "description": "",
+        "data": 
+        {
+        "nodeType": "checker",
+        "data": {
+            "checkerType": "changeTag",
+            "data": [
+                {
+                    "level": 0,
+                    "data": {
+                        "tag": "slowed"
+                    }
+                }
+            ]
+        }
+        }
+        },
+  {
+    "name": "battleResult",
+    "description": "",
+    "data": {
+            "checkerType": "battleResult",
+            "data": {
+                "result": "PlayerWin"
+            }
+        }
+  },
+  {
+    "name": "soldItem",
+    "description": "",
+    "data": {
+            "checkerType": "soldItem"
+            }
+    },
+  {
+    "name": "buyItem",
+    "description": "",
+    "data": {
+            "checkerType": "buyItem"
+            }
+    }
 ]

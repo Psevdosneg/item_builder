@@ -34,7 +34,7 @@ export interface Item {
   description: string;
   points: GridPoint[];
   tags: string[];
-  stats: Stat[];
+  stats?: Stat[];
   charges?: Charge[];
   logic?: LogicNode[];
   pivot?: Pivot;
