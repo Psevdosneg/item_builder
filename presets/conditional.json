@@ -1,6 +1,20 @@
 [
+{
+    "name": "itemSelf",
+    "description": "Target the item itself",
+    "data": {
+      "conditionalType": "itemSelf"
+    }
+  },
   {
-    "name": "characterRelative - ally",
+    "name": "characterSelf",
+    "description": "Target the character owning the item",
+    "data": {
+      "conditionalType": "characterSelf"
+    }
+  },
+  {
+    "name": "characterRelative - all ally",
     "description": "Target enemy characters",
     "data": {
       "conditionalType": "characterRelative",
@@ -11,7 +25,7 @@
     }
   },
   {
-    "name": "characterRelative - enemy",
+    "name": "characterRelative - all enemy",
     "description": "Target enemy characters",
     "data": {
       "conditionalType": "characterRelative",
@@ -32,18 +46,6 @@
                 "data": {
                     "count": 1
                 }
-            },
-            {
-                "level": 1,
-                "data": {
-                    "count": 2
-                }
-            },
-            {
-                "level": 2,
-                "data": {
-                    "count": 3
-                }
             }
         ]
       }
@@ -56,18 +58,6 @@
         "data": [
             {
                 "level": 0,
-                "data": {
-                    "count": 1
-                }
-            },
-            {
-                "level": 1,
-                "data": {
-                    "count": 1
-                }
-            },
-            {
-                "level": 2,
                 "data": {
                     "count": 1
                 }
@@ -86,6 +76,23 @@
               "data": {
                   "tags": [
                       "crip"
+                  ]
+              }
+          }
+      ]
+    }
+  },
+  {
+    "name": "Enemy Character",
+    "description": "Target characters with specific tag",
+    "data": {
+      "conditionalType": "characterTag",
+      "data": [
+          {
+              "level": 0,
+              "data": {
+                  "tags": [
+                      "enemy"
                   ]
               }
           }
@@ -128,20 +135,6 @@
               }
           }
       ]
-    }
-  },
-  {
-    "name": "itemSelf",
-    "description": "Target the item itself",
-    "data": {
-      "conditionalType": "itemSelf"
-    }
-  },
-  {
-    "name": "characterSelf",
-    "description": "Target the character owning the item",
-    "data": {
-      "conditionalType": "characterSelf"
     }
   },
   {

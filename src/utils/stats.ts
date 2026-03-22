@@ -1,5 +1,5 @@
 // Import stats from preset file
-import statsData from '../data/presets/stats.json';
+import statsData from '../../presets/stats.json';
 
 /**
  * Available stat names for items, loaded from stats.json preset file

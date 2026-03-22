@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Input } from '../common/Input';
-import { Select } from '../common/Select';
-import type { SelectOption } from '../common/Select';
+import { SearchableSelect } from '../common/SearchableSelect';
+import type { SearchableSelectOption } from '../common/SearchableSelect';
 import { Button } from '../common/Button';
 import { STAT_NAMES } from '../../utils/constants';
 import styles from './StatItem.module.css';
@@ -26,7 +26,7 @@ export const StatItem: React.FC<StatItemProps> = ({
   isRemovable = true,
 }) => {
   // Create select options from STAT_NAMES
-  const statOptions: SelectOption[] = useMemo(() => {
+  const statOptions: SearchableSelectOption[] = useMemo(() => {
     return STAT_NAMES.map((statName) => ({
       value: statName,
       label: statName,
@@ -36,10 +36,11 @@ export const StatItem: React.FC<StatItemProps> = ({
   return (
     <div className={styles.statItem}>
       <div className={styles.inputs}>
-        <Select
+        <SearchableSelect
           value={name}
           options={statOptions}
           onChange={(value) => onNameChange(id, value)}
+          placeholder="Search stats..."
           fullWidth
         />
         <Input

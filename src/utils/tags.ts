@@ -1,5 +1,5 @@
 // Import tags from preset file
-import tagsData from '../data/presets/tags.json';
+import tagsData from '../../presets/tags.json';
 
 /**
  * Available tags for items, loaded from tags.json preset file

@@ -352,8 +352,7 @@ export const isDescendantOf = (
 export const isValidDropTarget = (
   nodes: Record<string, LogicNodeState>,
   draggedId: string,
-  targetId: string | null,
-  _newIndex?: number
+  targetId: string | null
 ): boolean => {
   // Can always drop to root level (targetId = null)
   if (targetId === null) return true;

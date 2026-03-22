@@ -18,53 +18,9 @@
                     "resource": "rage",
                     "count": 10
                 }
-            },
-            {
-                "level": 1,
-                "data": {
-                    "resource": "rage",
-                    "count": 15
-                }
-            },
-            {
-                "level": 2,
-                "data": {
-                    "resource": "rage",
-                    "count": 20
-                }
             }
         ]
     }
-  },
-  {
-    "name": "chargePrice",
-    "description": "",
-      "data": {
-          "checkerType": "chargePrice",
-          "data": [
-              {
-                  "level": 0,
-                  "data": {
-                      "charge": "uses",
-                      "count": 1
-                  }
-              },
-              {
-                  "level": 1,
-                  "data": {
-                      "charge": "uses",
-                      "count": 1
-                  }
-              },
-              {
-                  "level": 2,
-                  "data": {
-                      "charge": "uses",
-                      "count": 1
-                  }
-              }
-          ]
-      }
   },
   {
     "name": "allyPrice",
@@ -74,20 +30,6 @@
           "data": [
               {
                   "level": 0,
-                  "data": 
-                  {
-                      "count": 1
-                  }
-              },
-              {
-                  "level": 1,
-                  "data": 
-                  {
-                      "count": 1
-                  }
-              },
-              {
-                  "level": 3,
                   "data": 
                   {
                       "count": 1
@@ -114,7 +56,7 @@
     }
   },
   {
-    "name": "Crip Conditional",
+    "name": "cripConditional",
     "description": "",
     "data": {
       "checkerType": "cripConditional"

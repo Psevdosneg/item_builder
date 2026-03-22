@@ -37,17 +37,6 @@ export const StatsPanel: React.FC = () => {
         <h3 className={styles.sectionTitle}>Default Stats</h3>
         <div className={styles.defaultStats}>
           <div className={styles.defaultStatItem}>
-            <label className={styles.label}>Price</label>
-            <Input
-              type="number"
-              value={defaultStats.price.toString()}
-              onChange={(e) =>
-                dispatch(setDefaultStat({ key: 'price', value: parseFloat(e.target.value) || 0 }))
-              }
-              fullWidth
-            />
-          </div>
-          <div className={styles.defaultStatItem}>
             <label className={styles.label}>Level</label>
             <Input
               type="number"

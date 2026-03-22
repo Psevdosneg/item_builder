@@ -1,17 +1,17 @@
 import type { NodeType } from '../types/logic.types';
 
 // Import preset files
-import triggerPresets from '../data/presets/trigger.json';
-import checkerPresets from '../data/presets/checker.json';
-import activatorPresets from '../data/presets/activator.json';
-import auraPresets from '../data/presets/aura.json';
-import conditionalPresets from '../data/presets/conditional.json';
-import counterPresets from '../data/presets/counter.json';
+import triggerPresets from '../../presets/trigger.json';
+import checkerPresets from '../../presets/checker.json';
+import activatorPresets from '../../presets/activator.json';
+import auraPresets from '../../presets/aura.json';
+import conditionalPresets from '../../presets/conditional.json';
+import counterPresets from '../../presets/counter.json';
 
 export interface NodePreset {
   name: string;
   description: string;
-  data: any;
+  data: Record<string, unknown>;
 }
 
 // Map of presets by node type

@@ -170,7 +170,8 @@ const logicSlice = createSlice({
       const node = state.nodes[nodeId];
 
       if (node) {
-        node.data = data as any;
+        // Type assertion needed due to discriminated union complexity
+        (node as { data: typeof data }).data = data;
         // Validate the new data
         const validation = validateNodeData(node.nodeType, data);
         node.isValid = validation.valid;
@@ -187,7 +188,8 @@ const logicSlice = createSlice({
       const node = state.nodes[nodeId];
 
       if (node) {
-        node.nodeType = nodeType as any;
+        // Type assertion needed due to discriminated union complexity
+        (node as { nodeType: string }).nodeType = nodeType;
         // Reset validation when type changes
         node.isValid = true;
         node.validationError = null;

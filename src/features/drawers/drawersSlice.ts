@@ -96,7 +96,7 @@ const drawersSlice = createSlice({
           drawerId: null,
           currentStep: 'cellTop',
           partialDrawer: {
-            type: type || '',
+            type: type || 'multicast',
           },
         };
       }

@@ -11,13 +11,11 @@ interface StatsState {
 
 const initialState: StatsState = {
   defaultStats: {
-    price: 10,
     level: 0,
-    maxLevel: 3,
+    maxLevel: 0,
     rarity: 0,
   },
   touchedStats: {
-    price: false,
     level: false,
     maxLevel: false,
     rarity: false,
@@ -92,18 +90,15 @@ const statsSlice = createSlice({
       const { stats, charges } = action.payload;
 
       // Reset to defaults
-      state.defaultStats = { price: 10, level: 0, maxLevel: 3, rarity: 0 };
-      state.touchedStats = { price: false, level: false, maxLevel: false, rarity: false };
+      state.defaultStats = { level: 0, maxLevel: 0, rarity: 0 };
+      state.touchedStats = { level: false, maxLevel: false, rarity: false };
       state.customStats = [];
       state.charges = [];
 
       // Load stats
       if (stats) {
         for (const stat of stats) {
-          if (stat.name === 'price') {
-            state.defaultStats.price = stat.value;
-            state.touchedStats.price = true;
-          } else if (stat.name === 'level') {
+          if (stat.name === 'level') {
             state.defaultStats.level = stat.value;
             state.touchedStats.level = true;
           } else if (stat.name === 'maxLevel') {
@@ -113,6 +108,7 @@ const statsSlice = createSlice({
             state.defaultStats.rarity = stat.value;
             state.touchedStats.rarity = true;
           } else {
+            // price and other stats go to customStats
             state.customStats.push({
               ...stat,
               id: generateStatId(),

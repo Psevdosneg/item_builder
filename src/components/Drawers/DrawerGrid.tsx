@@ -44,7 +44,7 @@ export const DrawerGrid: React.FC<DrawerGridProps> = ({
       if (isSameCell(partialDrawer.cellRight, { x, y })) return 'cellRight';
       return null;
     };
-  }, [editMode.partialDrawer]);
+  }, [editMode]);
 
   const gridWidth = GRID_SIZE * CELL_SIZE + (GRID_SIZE - 1) * GAP;
   const gridHeight = gridWidth;

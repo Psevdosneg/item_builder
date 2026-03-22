@@ -86,8 +86,8 @@ export type CheckerNodeData =
   | { checkerType: 'allyPrice'; data: LevelData<AllyPriceData>[] }
   | { checkerType: 'resourcePrice'; data: LevelData<ResourcePriceData>[] }
   | { checkerType: 'battleState'; data: BattleStateData }
-  | { checkerType: 'itemConditional'; data?: any }
-  | { checkerType: 'cripConditional'; data?: any };
+  | { checkerType: 'itemConditional'; data?: Record<string, unknown> }
+  | { checkerType: 'cripConditional'; data?: Record<string, unknown> };
 
 // ============================================================================
 // ACTIVATOR NODE DATA TYPES
@@ -262,7 +262,7 @@ export interface CounterNodeData {
   data?: {
     includeDestroyed?: boolean;
     resourceId?: string;
-    [key: string]: any;
+    [key: string]: unknown;
   };
 }
 
@@ -285,7 +285,7 @@ export interface TriggerData {
  */
 export interface CheckerData {
   checkerType: CheckerType;
-  data?: any;
+  data?: Record<string, unknown>;
 }
 
 /**
@@ -294,7 +294,7 @@ export interface CheckerData {
  */
 export interface ActivatorData {
   activatorType: ActivatorType;
-  data?: any;
+  data?: Record<string, unknown>;
 }
 
 /**
@@ -303,7 +303,7 @@ export interface ActivatorData {
  */
 export interface ConditionalData {
   conditionalType: ConditionalType;
-  data?: any;
+  data?: Record<string, unknown>;
 }
 
 /**
@@ -330,7 +330,7 @@ export interface AuraData {
  */
 export interface CounterData {
   type: string;
-  data?: any;
+  data?: Record<string, unknown>;
 }
 
 // ============================================================================
@@ -446,48 +446,49 @@ export type LogicNodeState =
 /**
  * Type guard for trigger node data
  */
-export function isTriggerData(data: any): data is TriggerNodeData {
-  return data && typeof data.triggerType === 'string';
+export function isTriggerData(data: unknown): data is TriggerNodeData {
+  return data !== null && typeof data === 'object' && 'triggerType' in data && typeof (data as { triggerType: unknown }).triggerType === 'string';
 }
 
 /**
  * Type guard for checker node data
  */
-export function isCheckerData(data: any): data is CheckerNodeData {
-  return data && typeof data.checkerType === 'string';
+export function isCheckerData(data: unknown): data is CheckerNodeData {
+  return data !== null && typeof data === 'object' && 'checkerType' in data && typeof (data as { checkerType: unknown }).checkerType === 'string';
 }
 
 /**
  * Type guard for activator node data
  */
-export function isActivatorData(data: any): data is ActivatorNodeData {
-  return data && typeof data.activatorType === 'string';
+export function isActivatorData(data: unknown): data is ActivatorNodeData {
+  return data !== null && typeof data === 'object' && 'activatorType' in data && typeof (data as { activatorType: unknown }).activatorType === 'string';
 }
 
 /**
  * Type guard for aura node data
  */
-export function isAuraData(data: any): data is AuraNodeData {
+export function isAuraData(data: unknown): data is AuraNodeData {
+  if (data === null || typeof data !== 'object') return false;
+  const d = data as { effectType?: unknown; data?: { isDebuff?: unknown } };
   return (
-    data &&
-    typeof data.effectType === 'string' &&
-    data.data &&
-    typeof data.data.isDebuff === 'boolean'
+    typeof d.effectType === 'string' &&
+    d.data !== undefined &&
+    typeof d.data.isDebuff === 'boolean'
   );
 }
 
 /**
  * Type guard for conditional node data
  */
-export function isConditionalData(data: any): data is ConditionalNodeData {
-  return data && typeof data.conditionalType === 'string';
+export function isConditionalData(data: unknown): data is ConditionalNodeData {
+  return data !== null && typeof data === 'object' && 'conditionalType' in data && typeof (data as { conditionalType: unknown }).conditionalType === 'string';
 }
 
 /**
  * Type guard for counter node data
  */
-export function isCounterData(data: any): data is CounterNodeData {
-  return data && typeof data.type === 'string';
+export function isCounterData(data: unknown): data is CounterNodeData {
+  return data !== null && typeof data === 'object' && 'type' in data && typeof (data as { type: unknown }).type === 'string';
 }
 
 // ============================================================================
@@ -543,7 +544,7 @@ export interface TreeStats {
 export interface LogicNodePreset {
   name: string;
   nodeType: NodeType;
-  data: Record<string, any>;
+  data: Record<string, unknown>;
   children?: LogicNodePreset[];
 }
 

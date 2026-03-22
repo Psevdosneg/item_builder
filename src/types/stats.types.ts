@@ -14,7 +14,6 @@ export interface Charge {
 
 // Default stats that every item has
 export interface DefaultStats {
-  price: number;
   level: number;
   maxLevel: number;
   rarity: number;

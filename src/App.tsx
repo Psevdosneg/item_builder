@@ -171,10 +171,7 @@ function App() {
           <Button variant="secondary" onClick={handlePasteJSON}>
             Paste JSON (Ctrl+V)
           </Button>
-          <Button variant="secondary">
-            Load Template
-          </Button>
-          <Button variant="danger" onClick={handleClearAll}>
+<Button variant="danger" onClick={handleClearAll}>
             Clear All
           </Button>
         </div>

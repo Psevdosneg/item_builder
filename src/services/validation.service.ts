@@ -37,7 +37,7 @@ export const validateJSON = (jsonString: string): ValidationResult => {
  */
 export const validateNodeData = (
   _nodeType: NodeType,
-  data: any
+  data: unknown
 ): ValidationResult => {
   if (data === null || data === undefined) {
     return { valid: true };

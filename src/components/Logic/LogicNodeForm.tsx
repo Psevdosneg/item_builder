@@ -37,7 +37,7 @@ export const LogicNodeForm: React.FC<LogicNodeFormProps> = ({ nodeId }) => {
   const presets = useMemo(() => {
     if (!node) return [];
     return getPresetsForType(node.nodeType);
-  }, [node?.nodeType]);
+  }, [node]);
 
   // Convert presets to select options
   const presetOptions: SelectOption[] = useMemo(() => {
@@ -50,19 +50,24 @@ export const LogicNodeForm: React.FC<LogicNodeFormProps> = ({ nodeId }) => {
     ];
   }, [presets]);
 
-  // Sync local text with node data when node changes externally
+  // Store the current nodeType in a variable to use as dependency
+  const currentNodeType = node?.nodeType;
+
+  // Sync local text and reset preset selector when node type changes
   useEffect(() => {
     if (node) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setLocalJsonText(JSON.stringify(node.data, null, 2));
-      setSelectedPreset(''); // Reset preset selection
+      setSelectedPreset('');
     }
-  }, [node?.nodeType]); // Only update when node type changes
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentNodeType]);
 
   if (!node) return null;
 
   const handleTypeChange = (newType: string) => {
     const nodeType = newType as NodeType;
-    dispatch(updateNode({ nodeId, updates: { nodeType, data: createDefaultNodeData(nodeType) } } as any));
+    dispatch(updateNode({ nodeId, updates: { nodeType, data: createDefaultNodeData(nodeType) } }));
     setValidationMessage(null);
   };
 
@@ -75,7 +80,7 @@ export const LogicNodeForm: React.FC<LogicNodeFormProps> = ({ nodeId }) => {
     try {
       const data = JSON.parse(jsonString);
       dispatch(updateNodeData({ nodeId, data }));
-    } catch (error) {
+    } catch {
       // JSON is invalid, but we still allow editing
       // User can fix it and it will auto-save when valid
     }
@@ -98,7 +103,7 @@ export const LogicNodeForm: React.FC<LogicNodeFormProps> = ({ nodeId }) => {
         setValidationMessage(`✗ ${validation.error || 'Invalid data structure'}`);
         setIsValidationSuccess(false);
       }
-    } catch (error) {
+    } catch {
       setValidationMessage('✗ Invalid JSON syntax');
       setIsValidationSuccess(false);
     }

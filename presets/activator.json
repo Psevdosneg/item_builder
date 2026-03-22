@@ -17,24 +17,7 @@
                 "level": 0,
                 "data": 
                 {
-                  "resource": "rage",
-                  "value": 1
-                }
-              },
-              {
-                "level": 1,
-                "data": 
-                {
-                  "resource": "rage",
-                  "value": 2
-                }
-              },
-              {
-                "level": 2,
-                "data": 
-                {
-                  "resource": "rage",
-                  "value": 3
+                  "resource": "rage"
                 }
               }
             ]
@@ -51,24 +34,7 @@
                 "level": 0,
                 "data": 
                 {
-                  "resource": "rage",
-                  "value": 1
-                }
-              },
-              {
-                "level": 1,
-                "data": 
-                {
-                  "resource": "rage",
-                  "value": 2
-                }
-              },
-              {
-                "level": 2,
-                "data": 
-                {
-                  "resource": "rage",
-                  "value": 3
+                  "resource": "rage"
                 }
               }
             ]
@@ -105,7 +71,6 @@
 										"tags": 
 										[
 											{
-												"time": 2,
 												"tag": "slowed"
 											}
 										]
@@ -118,27 +83,7 @@
     "name": "impulseItem",
     "description": "",
     "data": {
-							"activatorType": "impulseItem",
-							"data": [
-								{
-									"level": 0,
-									"data": {
-										"value": 1
-									}
-								},
-								{
-									"level": 1,
-									"data": {
-										"value": 1.5
-									}
-								},
-								{
-									"level": 2,
-									"data": {
-										"value": 2
-									}
-								}
-							]
+							"activatorType": "impulseItem"
 						}
   },
   {
@@ -147,36 +92,6 @@
     "data": {
 							"activatorType": "heal"
 						}
-  },
-  {
-    "name": "changeItemCharge",
-    "description": "",
-    "data": {
-      "activatorType": "",
-      "data": [
-          {
-              "level": 0,
-              "data": {
-                  "charge": "uses",
-                  "count": 1
-              }
-          },
-          {
-              "level": 1,
-              "data": {
-                  "charge": "uses",
-                  "count": 2
-              }
-          },
-          {
-              "level": 2,
-              "data": {
-                  "charge": "uses",
-                  "count": 3
-              }
-          }
-      ]
-    }
   },
   {
     "name": "addItemStateTag",
@@ -189,7 +104,6 @@
                       "data": {
                           "tags": [
                               {
-                                  "time": 2,
                                   "tag": "slowed"
                               }
                           ]
@@ -246,20 +160,6 @@
                         "stat": "addedDamage",
                         "value": 10
                     }
-                },
-                {
-                    "level": 1,
-                    "data": {
-                        "stat": "addedDamage",
-                        "value": 20
-                    }
-                },
-                {
-                    "level": 2,
-                    "data": {
-                        "stat": "addedDamage",
-                        "value": 30
-                    }
                 }
             ]
         }
@@ -281,5 +181,21 @@
                   }
               ]
           }
+  },
+  {
+    "name": "changeItemCharge",
+    "description": "",
+    "data": {
+      "activatorType": "",
+      "data": [
+          {
+              "level": 0,
+              "data": {
+                  "charge": "uses",
+                  "count": 1
+              }
+          }
+      ]
+    }
   }
 ]

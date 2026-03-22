@@ -1,9 +1,18 @@
 import React from 'react';
 import { DrawerGridSimple } from './DrawerGridSimple';
-import { Input } from '../common/Input';
+import { Select } from '../common/Select';
+import type { SelectOption } from '../common/Select';
 import { Button } from '../common/Button';
 import type { DrawerEditMode } from '../../types/drawer.types';
 import styles from './DrawerEditor.module.css';
+
+const DRAWER_TYPE_OPTIONS: SelectOption[] = [
+  'multicast', 'damage', 'heal', 'cooldown', 'collectedTime', 'spawnedCrips',
+  'addedHeal', 'givenMadness', 'givenRegeneration', 'givenShield', 'givenMana',
+  'givenAmmo', 'givenBurn', 'givenHaste', 'givenBleed', 'givenRage',
+  'givenImpulse', 'sellPrice', 'income', 'givenMaxHealth', 'givenPoison',
+  'givenGold', 'givenSlow', 'givenFreeze',
+].map((t) => ({ value: t, label: t }));
 
 type CellKey = 'cellTop' | 'cellBot' | 'cellLeft' | 'cellRight';
 
@@ -59,11 +68,10 @@ export const DrawerEditor: React.FC<DrawerEditorProps> = ({
 
       <div className={styles.typeRow}>
         <label>Drawer Type</label>
-        <Input
-          type="text"
-          placeholder="e.g. damage, multicast"
-          value={partialDrawer.type || ''}
-          onChange={(e) => onTypeChange(e.target.value)}
+        <Select
+          value={partialDrawer.type || 'multicast'}
+          options={DRAWER_TYPE_OPTIONS}
+          onChange={onTypeChange}
         />
       </div>
 
