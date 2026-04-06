@@ -1,0 +1,173 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  gap: 8px;
+}
+
+.search {
+  flex: 1;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 7px 12px;
+  color: var(--text-primary);
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.search:focus { border-color: var(--accent-primary); }
+
+.toolbarActions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Empty */
+.empty {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 13px;
+  padding: 32px 0;
+  flex: 1;
+}
+
+/* List */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 2px;
+}
+
+.list::-webkit-scrollbar { width: 4px; }
+.list::-webkit-scrollbar-track { background: transparent; }
+.list::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
+
+/* Card */
+.card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.15s;
+}
+.card:hover { border-color: var(--accent-primary); }
+
+.cardMain {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.cardName {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: default;
+  flex: 1;
+  word-break: break-word;
+}
+
+.highlight {
+  background: none;
+  color: var(--accent-primary);
+  font-weight: 700;
+}
+
+.cardDate {
+  font-size: 11px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.renameInput {
+  flex: 1;
+  background: var(--bg-secondary);
+  border: 1px solid var(--accent-primary);
+  border-radius: 4px;
+  padding: 2px 8px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  outline: none;
+}
+
+.cardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.tag {
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 20px;
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  color: var(--accent-secondary);
+}
+
+.cardActions {
+  display: flex;
+  gap: 5px;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 8px 0 2px;
+  border-top: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.pageBtn {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-size: 18px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s, color 0.15s;
+  line-height: 1;
+}
+.pageBtn:hover:not(:disabled) {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+.pageBtn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.pageInfo {
+  font-size: 13px;
+  color: var(--text-primary);
+  min-width: 60px;
+  text-align: center;
+}
+
+.pageCount {
+  color: var(--text-secondary);
+  font-size: 11px;
+}

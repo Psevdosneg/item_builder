@@ -1,0 +1,181 @@
+{
+  "weight": 100,
+  "name": "red_candle",
+  "ico": "uid://m01w6lfwxwxv",
+  "description": "",
+  "points": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 0,
+      "y": 2
+    },
+    {
+      "x": 1,
+      "y": 2
+    }
+  ],
+  "tags": [
+    "item",
+    "hasteRef",
+    "burn",
+    "mikael"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 1
+    },
+    {
+      "name": "givenBurn",
+      "value": 10
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 0,
+        "y": 1
+      },
+      "cellBot": {
+        "x": 0,
+        "y": 1
+      },
+      "cellLeft": {
+        "x": 0,
+        "y": 1
+      },
+      "cellRight": {
+        "x": 0,
+        "y": 1
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "getTag",
+        "isPassive": false
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "itemConditional"
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterSelf"
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "itemTag",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "tags": [
+                        "hasted"
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "itemPosition",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "relative": "Relative",
+                      "points": [
+                        {
+                          "x": -1,
+                          "y": 0
+                        },
+                        {
+                          "x": -1,
+                          "y": 1
+                        },
+                        {
+                          "x": 1,
+                          "y": 1
+                        },
+                        {
+                          "x": 1,
+                          "y": 0
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "changeResource",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "resource": "burn"
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRelative",
+                "data": {
+                  "relative": "enemy"
+                }
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRandom",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "count": 1
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

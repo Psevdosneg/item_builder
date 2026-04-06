@@ -1,0 +1,175 @@
+{
+  "weight": 100,
+  "name": "wasp_drone",
+  "ico": "uid://yt2fxr0ycbey",
+  "points": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 1,
+      "y": 0
+    },
+    {
+      "x": 1,
+      "y": 1
+    }
+  ],
+  "tags": [
+    "pet",
+    "hasCooldown",
+    "weapon",
+    "bleedRef",
+    "mikael"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 1
+    },
+    {
+      "name": "cooldown",
+      "value": 6
+    },
+    {
+      "name": "damage",
+      "value": 25
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 1,
+        "y": 0
+      },
+      "cellBot": {
+        "x": 1,
+        "y": 0
+      },
+      "cellLeft": {
+        "x": 1,
+        "y": 0
+      },
+      "cellRight": {
+        "x": 1,
+        "y": 0
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "cooldown"
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "cooldown"
+          }
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "damage"
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRelative",
+                "data": {
+                  "relative": "enemy"
+                }
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRandom",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "count": 1
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "changeResource",
+        "isPassive": true
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "changeResource",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "resource": "bleed",
+                  "mode": "greate",
+                  "delta": 0
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRelative",
+                "data": {
+                  "relative": "enemy"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "addItemModificator",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "value": 5,
+                  "stat": "addedDamage"
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "itemSelf"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

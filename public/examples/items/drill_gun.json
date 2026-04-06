@@ -1,0 +1,163 @@
+{
+  "weight": 100,
+  "name": "drill_gun",
+  "ico": "uid://jsd5jb3gl1ha",
+  "description": "",
+  "points": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 0
+    },
+    {
+      "x": 2,
+      "y": 0
+    },
+    {
+      "x": 2,
+      "y": 1
+    },
+    {
+      "x": 3,
+      "y": 0
+    }
+  ],
+  "tags": [
+    "item",
+    "hasCooldown",
+    "ammo",
+    "anne"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 1
+    },
+    {
+      "name": "cooldown",
+      "value": 5
+    },
+    {
+      "name": "damage",
+      "value": 50
+    },
+    {
+      "name": "multicast",
+      "value": 2
+    }
+  ],
+  "pivot": {
+    "x": 1,
+    "y": 1
+  },
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 1,
+        "y": 0
+      },
+      "cellBot": {
+        "x": 1,
+        "y": 0
+      },
+      "cellLeft": {
+        "x": 1,
+        "y": 0
+      },
+      "cellRight": {
+        "x": 1,
+        "y": 0
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "cooldown"
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "cooldown"
+          }
+        },
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "resourcePrice",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "resource": "ammo",
+                  "count": 3
+                }
+              }
+            ]
+          }
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "damage"
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRelative",
+                "data": {
+                  "relative": "enemy"
+                }
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRandom",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "count": 1
+                    }
+                  },
+                  {
+                    "level": 1,
+                    "data": {
+                      "count": 2
+                    }
+                  },
+                  {
+                    "level": 2,
+                    "data": {
+                      "count": 3
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

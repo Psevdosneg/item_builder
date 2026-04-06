@@ -1,0 +1,139 @@
+{
+  "weight": 100,
+  "name": "oil_dropper",
+  "ico": "uid://cgf3qiplpw5r2",
+  "description": "",
+  "points": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 2
+    },
+    {
+      "x": 2,
+      "y": 2
+    },
+    {
+      "x": 2,
+      "y": 1
+    }
+  ],
+  "tags": [
+    "item",
+    "hasCooldown",
+    "tool",
+    "rage",
+    "anne"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 0
+    },
+    {
+      "name": "cooldown",
+      "value": 5
+    },
+    {
+      "name": "givenRage",
+      "value": 5
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 0,
+        "y": 1
+      },
+      "cellBot": {
+        "x": 0,
+        "y": 1
+      },
+      "cellLeft": {
+        "x": 0,
+        "y": 1
+      },
+      "cellRight": {
+        "x": 0,
+        "y": 1
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "cooldown"
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "cooldown"
+          }
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "changeResource",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "resource": "rage"
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRelative",
+                "data": {
+                  "relative": "ally"
+                }
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterTag",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "tags": [
+                        "minion"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "weight": 100,
+  "name": "energy_potion",
+  "ico": "uid://clckj5ly4h1fw",
+  "points": [
+    {
+      "x": 0,
+      "y": 2
+    },
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 0,
+      "y": 0
+    }
+  ],
+  "tags": [
+    "item",
+    "hascooldown",
+    "rage",
+    "global"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 1
+    },
+    {
+      "name": "cooldown",
+      "value": 8
+    },
+    {
+      "name": "givenRage",
+      "value": 5
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 0,
+        "y": 2
+      },
+      "cellBot": {
+        "x": 0,
+        "y": 2
+      },
+      "cellLeft": {
+        "x": 0,
+        "y": 2
+      },
+      "cellRight": {
+        "x": 0,
+        "y": 2
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "cooldown"
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "cooldown"
+          }
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "changeResource",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "resource": "rage"
+                }
+              },
+              {
+                "level": 1,
+                "data": {
+                  "resource": "rage"
+                }
+              },
+              {
+                "level": 2,
+                "data": {
+                  "resource": "rage"
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterSelf"
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "addItemStateTag",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "tags": [
+                    {
+                      "tag": "destroyed"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "itemSelf"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

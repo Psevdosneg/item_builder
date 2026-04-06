@@ -1,0 +1,168 @@
+{
+  "weight": 100,
+  "name": "wasp_spy",
+  "ico": "uid://6bo5uwo8kef",
+  "description": "",
+  "points": [
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 1
+    },
+    {
+      "x": 2,
+      "y": 1
+    },
+    {
+      "x": 2,
+      "y": 2
+    },
+    {
+      "x": 2,
+      "y": 0
+    }
+  ],
+  "tags": [
+    "pet",
+    "weaponRef",
+    "item",
+    "mikael"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 2
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 2,
+        "y": 1
+      },
+      "cellBot": {
+        "x": 2,
+        "y": 1
+      },
+      "cellLeft": {
+        "x": 2,
+        "y": 1
+      },
+      "cellRight": {
+        "x": 2,
+        "y": 1
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "cripSpawn",
+        "isPassive": false
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "minionConditional"
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRelative",
+                "data": {
+                  "relative": "enemy"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "addItemModificator",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "value": 15,
+                  "stat": "addedDamage"
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterSelf"
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "itemTag",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "tags": [
+                        "weapon"
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "itemPosition",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "relative": "Relative",
+                      "points": [
+                        {
+                          "x": 1,
+                          "y": 0
+                        },
+                        {
+                          "x": 0,
+                          "y": 0
+                        },
+                        {
+                          "x": 0,
+                          "y": 2
+                        },
+                        {
+                          "x": 1,
+                          "y": 2
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

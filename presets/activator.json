@@ -7,6 +7,27 @@
     }
   },
   {
+    "name": "impulseItem",
+    "description": "",
+    "data": {
+							"activatorType": "impulseItem"
+						}
+  },
+  {
+    "name": "heal",
+    "description": "",
+    "data": {
+							"activatorType": "heal"
+						}
+  },
+  {
+    "name": "forceActivateItem",
+    "description": "",
+    "data": {
+              "activatorType": "forceActivateItem"
+            }
+  },
+  {
     "name": "changeResource",
     "description": "",
     "data": {
@@ -24,25 +45,35 @@
     }
   },
   {
+    "name": "removeResource",
+    "description": "",
+    "data": {
+              "activatorType": "removeResource",
+              "data": [
+                {
+                  "level": 0,
+                  "data": {
+                    "resource": "regeneration",
+                    "count" : 10
+                  }
+                }
+              ]
+  }
+  },
+  {
     "name": "consumeResource",
     "description": "",
     "data": {
-            "activatorType": "consumeResource",
-            "data": 
-            [
-              {
-                "level": 0,
-                "data": 
-                {
-                  "resource": "rage"
+                "activatorType": "consumeResource",
+                "data": {
+                    "resource": "bleed"
                 }
-              }
-            ]
-    }
+            }
   },
+
   {
     "name": "spawner",
-    "description": "Spawn units or entities",
+    "description": "",
     "data": {
 							"activatorType": "spawner",
 							"data": 
@@ -60,52 +91,16 @@
   },
   {
     "name": "addItemStateTag",
-    "description": "Add a state tag to item",
-    "data": {
-							"activatorType": "addItemStateTag",
-							"data": [
-								{
-									"level": 0,
-									"data": 
-									{
-										"tags": 
-										[
-											{
-												"tag": "slowed"
-											}
-										]
-									}
-								}
-							]
-						}
-  },
-  {
-    "name": "impulseItem",
     "description": "",
-    "data": {
-							"activatorType": "impulseItem"
-						}
-  },
-  {
-    "name": "heal",
-    "description": "Restore health to target",
-    "data": {
-							"activatorType": "heal"
-						}
-  },
-  {
-    "name": "addItemStateTag",
-    "description": "Restore health to target",
     "data": {
               "activatorType": "addItemStateTag",
               "data": [
                   {
                       "level": 0,
                       "data": {
-                          "tags": [
-                              {
-                                  "tag": "slowed"
-                              }
+                          "tags": 
+                          [
+                            "slowed"
                           ]
                       }
                   }
@@ -113,7 +108,7 @@
           }
   },
   {
-    "name": "deleteItemStateTag",
+    "name": "deleteItemStateTags",
     "description": "",
     "data": {
             "activatorType": "deleteItemStateTag",
@@ -121,32 +116,14 @@
                 {
                     "level": 0,
                     "data": {
-                        "tags": [
-                            {
-                                "tag": "slowed"
-                            }
+                        "tags": 
+                        [
+                          "slowed"
                         ]
                     }
                 }
             ]
         }
-  },
-  {
-    "name": "consumeResource",
-    "description": "",
-    "data": {
-                "activatorType": "consumeResource",
-                "data": {
-                    "resource": "bleed"
-                }
-            }
-  },
-  {
-    "name": "forceActivateItem",
-    "description": "",
-    "data": {
-              "activatorType": "forceActivateItem"
-            }
   },
   {
     "name": "addItemModificator",
@@ -174,28 +151,27 @@
                       "level": 0,
                       "data": {
                           "count": 1,
-                          "items": [
-                              "cleaver"
-                          ]
+                          "items": ["cleaver"]
                       }
                   }
               ]
           }
   },
   {
-    "name": "changeItemCharge",
+    "name": "randomSpawner",
     "description": "",
     "data": {
-      "activatorType": "",
-      "data": [
-          {
-              "level": 0,
-              "data": {
-                  "charge": "uses",
-                  "count": 1
-              }
-          }
-      ]
+        "activatorType": "randomSpawner",
+        "data": [
+            {
+                "level": 0,
+                "data": {
+                    "relative": "ally",
+                    "characters":[ "CripRabbit", "CripRabbit", "CripRabbit"],
+                    "count": 1
+                }
+            }
+        ]
     }
   }
 ]

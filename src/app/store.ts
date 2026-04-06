@@ -5,6 +5,7 @@ import statsReducer from '../features/stats/statsSlice';
 import logicReducer from '../features/logic/logicSlice';
 import templatesReducer from '../features/templates/templatesSlice';
 import drawersReducer from '../features/drawers/drawersSlice';
+import libraryReducer from '../features/library/librarySlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     logic: logicReducer,
     templates: templatesReducer,
     drawers: drawersReducer,
+    library: libraryReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

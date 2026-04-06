@@ -1,0 +1,231 @@
+{
+  "weight": 100,
+  "name": "censer",
+  "ico": "uid://sv1k31ygltw7",
+  "description": "",
+  "points": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 1,
+      "y": 0
+    },
+    {
+      "x": 1,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 2
+    },
+    {
+      "x": 1,
+      "y": 3
+    },
+    {
+      "x": 0,
+      "y": 3
+    },
+    {
+      "x": 0,
+      "y": 4
+    },
+    {
+      "x": 1,
+      "y": 4
+    }
+  ],
+  "tags": [
+    "item",
+    "burn",
+    "mikael"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 2
+    },
+    {
+      "name": "givenBurn",
+      "value": 10
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 1,
+        "y": 1
+      },
+      "cellBot": {
+        "x": 1,
+        "y": 1
+      },
+      "cellLeft": {
+        "x": 1,
+        "y": 1
+      },
+      "cellRight": {
+        "x": 1,
+        "y": 1
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "itemActivated",
+        "isPassive": false
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "itemConditional"
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterSelf"
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "itemTag",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "tags": [
+                        "weapon"
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "itemPosition",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "relative": "Relative",
+                      "points": [
+                        {
+                          "x": -1,
+                          "y": 3
+                        },
+                        {
+                          "x": -1,
+                          "y": 4
+                        },
+                        {
+                          "x": 2,
+                          "y": 4
+                        },
+                        {
+                          "x": 2,
+                          "y": 3
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "changeResource",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "resource": "burn"
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRelative",
+                "data": {
+                  "relative": "enemy"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "minionDeath",
+        "isPassive": true
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "minionConditional"
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRelative",
+                "data": {
+                  "relative": "ally"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "addItemModificator",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "value": 5,
+                  "stat": "addedBurn"
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "itemSelf"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -56,10 +56,17 @@
     }
   },
   {
-    "name": "cripConditional",
+    "name": "characterConditional",
     "description": "",
     "data": {
-      "checkerType": "cripConditional"
+      "checkerType": "characterConditional"
+    }
+  },
+  {
+    "name": "minionConditional",
+    "description": "",
+    "data": {
+      "checkerType": "minionConditional"
     }
   },
   {
@@ -84,8 +91,6 @@
     "description": "",
         "data": 
         {
-        "nodeType": "checker",
-        "data": {
             "checkerType": "changeTag",
             "data": [
                 {
@@ -95,7 +100,6 @@
                     }
                 }
             ]
-        }
         }
         },
   {
@@ -121,5 +125,19 @@
     "data": {
             "checkerType": "buyItem"
             }
+    },
+  {
+    "name": "activationsCount",
+    "description": "",
+    "data": { "checkerType": "activationsCount",
+    "data": [
+      {
+        "level": 0,
+        "data": {
+          "count": 4
+        }
+      }
+    ]
+  }
     }
 ]

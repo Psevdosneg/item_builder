@@ -1,0 +1,176 @@
+{
+  "weight": 100,
+  "name": "spiked_glove",
+  "ico": "uid://c3wvlreey1ju7",
+  "description": "",
+  "points": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 0,
+      "y": 2
+    },
+    {
+      "x": 1,
+      "y": 2
+    },
+    {
+      "x": 1,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 0
+    }
+  ],
+  "tags": [
+    "item",
+    "hasCooldown",
+    "mikael"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 2
+    },
+    {
+      "name": "cooldown",
+      "value": 6
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 1,
+        "y": 1
+      },
+      "cellBot": {
+        "x": 1,
+        "y": 1
+      },
+      "cellLeft": {
+        "x": 1,
+        "y": 1
+      },
+      "cellRight": {
+        "x": 1,
+        "y": 1
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "cooldown"
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "cooldown"
+          }
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "addItemStateTag",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "tags": [
+                    {
+                      "tag": "destroyed"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterSelf"
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "itemTag",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "tags": [
+                        "Pet"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "deleteItemStateTag",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "tags": [
+                    {
+                      "tag": "destroyed"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterSelf"
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "itemTag",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "tags": [
+                        "Potion"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

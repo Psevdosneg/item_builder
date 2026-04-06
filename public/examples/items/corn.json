@@ -1,0 +1,177 @@
+{
+  "weight": 100,
+  "name": "corn",
+  "ico": "uid://dakaek6u276xs",
+  "points": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 0,
+      "y": 2
+    }
+  ],
+  "tags": [
+    "item",
+    "hasCooldown",
+    "regeneration",
+    "food",
+    "global"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 3
+    },
+    {
+      "name": "rarity",
+      "value": 0
+    },
+    {
+      "name": "cooldown",
+      "value": 4
+    },
+    {
+      "name": "givenRegeneration",
+      "value": 1
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 0,
+        "y": 2
+      },
+      "cellBot": {
+        "x": 0,
+        "y": 2
+      },
+      "cellLeft": {
+        "x": 0,
+        "y": 2
+      },
+      "cellRight": {
+        "x": 0,
+        "y": 2
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "cooldown"
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "cooldown"
+          }
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "changeResource",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "resource": "regeneration"
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterSelf"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nodeType": "aura",
+      "children": [
+        {
+          "nodeType": "conditional",
+          "data": {
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "relative": "Relative",
+                  "points": [
+                    {
+                      "x": -1,
+                      "y": 0
+                    },
+                    {
+                      "x": -1,
+                      "y": 2
+                    },
+                    {
+                      "x": 1,
+                      "y": 2
+                    },
+                    {
+                      "x": 1,
+                      "y": 0
+                    }
+                  ]
+                }
+              }
+            ],
+            "conditionalType": "itemPosition"
+          }
+        },
+        {
+          "nodeType": "conditional",
+          "data": {
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "tags": [
+                    "heal"
+                  ]
+                }
+              }
+            ],
+            "conditionalType": "itemTag"
+          }
+        }
+      ],
+      "data": {
+        "effectType": "item",
+        "data": {
+          "isDebuff": false,
+          "modificateStats": [
+            {
+              "level": 0,
+              "data": [
+                {
+                  "name": "addedHeal",
+                  "value": 5
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

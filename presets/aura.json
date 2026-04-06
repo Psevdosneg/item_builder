@@ -1,7 +1,7 @@
 [
   {
     "name": "Item Effect Aura",
-    "description": "Basic item effect aura",
+    "description": "",
     "data": {
              "effectType": "item",
                     "data": 

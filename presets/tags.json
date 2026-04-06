@@ -7,6 +7,8 @@
 "weapon",
 "charges",
 "chargesRef",
+"loot",
+"lootRef",
 "tauntSource",
 "tauntRef",
 "taunted",

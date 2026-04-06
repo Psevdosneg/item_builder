@@ -1,0 +1,211 @@
+{
+  "weight": 100,
+  "name": "circular_saw",
+  "ico": "uid://ckgdvgaf8biib",
+  "description": "",
+  "points": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 0
+    },
+    {
+      "x": 1,
+      "y": 2
+    }
+  ],
+  "tags": [
+    "item",
+    "hasCooldown",
+    "weapon",
+    "bleed",
+    "global"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 0
+    },
+    {
+      "name": "cooldown",
+      "value": 9
+    },
+    {
+      "name": "damage",
+      "value": 50
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 1,
+        "y": 2
+      },
+      "cellBot": {
+        "x": 1,
+        "y": 2
+      },
+      "cellLeft": {
+        "x": 1,
+        "y": 2
+      },
+      "cellRight": {
+        "x": 1,
+        "y": 2
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "cooldown"
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "cooldown"
+          }
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "damage"
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRelative",
+                "data": {
+                  "relative": "enemy"
+                }
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRandom",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "count": 1
+                    }
+                  },
+                  {
+                    "level": 1,
+                    "data": {
+                      "count": 1
+                    }
+                  },
+                  {
+                    "level": 2,
+                    "data": {
+                      "count": 1
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "nodeType": "activator",
+              "data": {
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "resource": "bleed",
+                      "value": 0
+                    }
+                  }
+                ],
+                "activatorType": "changeResource"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nodeType": "aura",
+      "data": {
+        "effectType": "item",
+        "data": {
+          "isDebuff": false,
+          "modificateStats": [
+            {
+              "level": 0,
+              "data": [
+                {
+                  "name": "addedBleed",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "children": [
+        {
+          "nodeType": "counter",
+          "data": {
+            "data": {
+              "powers": [
+                {
+                  "level": 0,
+                  "data": 0.2
+                },
+                {
+                  "level": 1,
+                  "data": 0.2
+                },
+                {
+                  "level": 2,
+                  "data": 0.2
+                }
+              ],
+              "StatId": "damage"
+            },
+            "counterType": "itemStat"
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "itemSelf"
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "conditional",
+          "data": {
+            "conditionalType": "itemSelf"
+          }
+        }
+      ]
+    }
+  ]
+}

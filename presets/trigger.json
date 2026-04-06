@@ -31,18 +31,18 @@
     }
   },
   {
-    "name": "cripSpawn",
-    "description": "Triggers when a crip spawns",
+    "name": "minionSpawn",
+    "description": "Triggers when a minion spawns",
     "data": {
-      "triggerType": "cripSpawn",
+      "triggerType": "minionSpawn",
       "isPassive": true
     }
   },
   {
-    "name": "cripDeath",
-    "description": "Triggers when a crip dies",
+    "name": "minionDeath",
+    "description": "Triggers when a minion dies",
     "data": {
-      "triggerType": "cripDeath",
+      "triggerType": "minionDeath",
       "isPassive": true
     }
   },

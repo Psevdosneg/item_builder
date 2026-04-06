@@ -1,0 +1,163 @@
+{
+  "weight": 100,
+  "name": "magnet_beetle",
+  "ico": "uid://d4cxawj8spaf3",
+  "description": "",
+  "points": [
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 2
+    },
+    {
+      "x": 1,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 0
+    },
+    {
+      "x": 2,
+      "y": 1
+    },
+    {
+      "x": 2,
+      "y": 0
+    }
+  ],
+  "tags": [
+    "item",
+    "toolRef",
+    "pet",
+    "shield",
+    "anne"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 0
+    },
+    {
+      "name": "givenShield",
+      "value": 15
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 1,
+        "y": 1
+      },
+      "cellBot": {
+        "x": 1,
+        "y": 1
+      },
+      "cellLeft": {
+        "x": 1,
+        "y": 1
+      },
+      "cellRight": {
+        "x": 1,
+        "y": 1
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "itemActivated",
+        "isPassive": true
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "itemConditional"
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "itemPosition",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "relative": "Relative",
+                      "points": [
+                        {
+                          "x": 0,
+                          "y": 0
+                        },
+                        {
+                          "x": 0,
+                          "y": 2
+                        },
+                        {
+                          "x": 2,
+                          "y": 2
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "itemTag",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "tags": [
+                        "tool"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "changeResource",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "resource": "shield"
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterSelf"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

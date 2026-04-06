@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useState } from 'react';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { loadItem, setTags } from './features/item/itemSlice';
 import { AVAILABLE_TAGS } from './utils/tags';
@@ -10,6 +10,7 @@ import { BasicInfoPanel } from './containers/BasicInfoPanel';
 import { StatsContainer } from './containers/StatsContainer';
 import { LogicContainer } from './containers/LogicContainer';
 import { DrawersContainer } from './containers/DrawersContainer';
+import { LibraryContainer } from './containers/LibraryContainer';
 import { JSONPreview } from './containers/JSONPreview';
 import { Button } from './components/common/Button';
 import { generateJSONString, copyJSONToClipboard } from './utils/json.utils';
@@ -21,6 +22,8 @@ function App() {
   const state = useAppSelector((state) => state);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { showToast, showConfirm } = useNotification();
+  const [libraryOpen, setLibraryOpen] = useState(false);
+  const libraryCount = useAppSelector((s) => Object.keys(s.library.entries).length);
 
   const importJSONData = useCallback((jsonString: string, source: string) => {
     try {
@@ -159,8 +162,21 @@ function App() {
   return (
     <div className={styles.app}>
       <header className={styles.header}>
-        <h1 className={styles.title}>Game Item Builder</h1>
-        <p className={styles.subtitle}>React + TypeScript + Redux Toolkit</p>
+        <div className={styles.headerInner}>
+          <div>
+            <h1 className={styles.title}>Game Item Builder</h1>
+            <p className={styles.subtitle}>React + TypeScript + Redux Toolkit</p>
+          </div>
+          <button
+            className={styles.libraryBtn}
+            type="button"
+            onClick={() => setLibraryOpen(true)}
+            title="Open Library"
+          >
+            Library
+            {libraryCount > 0 && <span className={styles.libraryBadge}>{libraryCount}</span>}
+          </button>
+        </div>
       </header>
 
       <div className={styles.content}>
@@ -193,6 +209,8 @@ function App() {
         <DrawersContainer />
         <LogicContainer />
       </div>
+
+      <LibraryContainer isOpen={libraryOpen} onClose={() => setLibraryOpen(false)} />
     </div>
   );
 }

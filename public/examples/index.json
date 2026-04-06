@@ -1,0 +1,390 @@
+[
+  {
+    "name": "corn",
+    "file": "corn.json"
+  },
+  {
+    "name": "rusty_crystal_0",
+    "file": "rusty_crystal_0.json"
+  },
+  {
+    "name": "rusty_crystal_1",
+    "file": "rusty_crystal_1.json"
+  },
+  {
+    "name": "rusty_crystal_2",
+    "file": "rusty_crystal_2.json"
+  },
+  {
+    "name": "rusty_crystal_3",
+    "file": "rusty_crystal_3.json"
+  },
+  {
+    "name": "aid_kit",
+    "file": "aid_kit.json"
+  },
+  {
+    "name": "can_beans",
+    "file": "can_beans.json"
+  },
+  {
+    "name": "tape",
+    "file": "tape.json"
+  },
+  {
+    "name": "pickaxe",
+    "file": "pickaxe.json"
+  },
+  {
+    "name": "thermal_shield",
+    "file": "thermal_shield.json"
+  },
+  {
+    "name": "bandolier",
+    "file": "bandolier.json"
+  },
+  {
+    "name": "spanner",
+    "file": "spanner.json"
+  },
+  {
+    "name": "mana_cell",
+    "file": "mana_cell.json"
+  },
+  {
+    "name": "rusty_glove",
+    "file": "rusty_glove.json"
+  },
+  {
+    "name": "lamp",
+    "file": "lamp.json"
+  },
+  {
+    "name": "rusty_drill",
+    "file": "rusty_drill.json"
+  },
+  {
+    "name": "cleaver",
+    "file": "cleaver.json"
+  },
+  {
+    "name": "fuel",
+    "file": "fuel.json"
+  },
+  {
+    "name": "circular_saw",
+    "file": "circular_saw.json"
+  },
+  {
+    "name": "bandages",
+    "file": "bandages.json"
+  },
+  {
+    "name": "energy_potion",
+    "file": "energy_potion.json"
+  },
+  {
+    "name": "blunderbuss",
+    "file": "blunderbuss.json"
+  },
+  {
+    "name": "rusty_dagger",
+    "file": "rusty_dagger.json"
+  },
+  {
+    "name": "boots",
+    "file": "boots.json"
+  },
+  {
+    "name": "miner_helmet",
+    "file": "miner_helmet.json"
+  },
+  {
+    "name": "explosive_mask",
+    "file": "explosive_mask.json"
+  },
+  {
+    "name": "chainsword",
+    "file": "chainsword.json"
+  },
+  {
+    "name": "wired_sword",
+    "file": "wired_sword.json"
+  },
+  {
+    "name": "drill_gun",
+    "file": "drill_gun.json"
+  },
+  {
+    "name": "rabbit_drone",
+    "file": "rabbit_drone.json"
+  },
+  {
+    "name": "geometric_sword",
+    "file": "geometric_sword.json"
+  },
+  {
+    "name": "siren",
+    "file": "siren.json"
+  },
+  {
+    "name": "drill",
+    "file": "drill.json"
+  },
+  {
+    "name": "combat_pan",
+    "file": "combat_pan.json"
+  },
+  {
+    "name": "golden_goose",
+    "file": "golden_goose.json"
+  },
+  {
+    "name": "golden_pig",
+    "file": "golden_pig.json"
+  },
+  {
+    "name": "activation_remote",
+    "file": "activation_remote.json"
+  },
+  {
+    "name": "dynomite",
+    "file": "dynomite.json"
+  },
+  {
+    "name": "executioner_axe",
+    "file": "executioner_axe.json"
+  },
+  {
+    "name": "gold_bar",
+    "file": "gold_bar.json"
+  },
+  {
+    "name": "mana_pipe",
+    "file": "mana_pipe.json"
+  },
+  {
+    "name": "shovel",
+    "file": "shovel.json"
+  },
+  {
+    "name": "mercenary_card",
+    "file": "mercenary_card.json"
+  },
+  {
+    "name": "guitar",
+    "file": "guitar.json"
+  },
+  {
+    "name": "rust_extractor",
+    "file": "rust_extractor.json"
+  },
+  {
+    "name": "mana_battery",
+    "file": "mana_battery.json"
+  },
+  {
+    "name": "sickle",
+    "file": "sickle.json"
+  },
+  {
+    "name": "blade_candle",
+    "file": "blade_candle.json"
+  },
+  {
+    "name": "censer",
+    "file": "censer.json"
+  },
+  {
+    "name": "lava_lamp",
+    "file": "lava_lamp.json"
+  },
+  {
+    "name": "red_candle",
+    "file": "red_candle.json"
+  },
+  {
+    "name": "crackers",
+    "file": "crackers.json"
+  },
+  {
+    "name": "bloody_amphora",
+    "file": "bloody_amphora.json"
+  },
+  {
+    "name": "bloody_engine",
+    "file": "bloody_engine.json"
+  },
+  {
+    "name": "wasp_mother",
+    "file": "wasp_mother.json"
+  },
+  {
+    "name": "wasp_drone",
+    "file": "wasp_drone.json"
+  },
+  {
+    "name": "wasp_soldier",
+    "file": "wasp_soldier.json"
+  },
+  {
+    "name": "wasp_wax",
+    "file": "wasp_wax.json"
+  },
+  {
+    "name": "wasp_spy",
+    "file": "wasp_spy.json"
+  },
+  {
+    "name": "wasp_rust",
+    "file": "wasp_rust.json"
+  },
+  {
+    "name": "wasp_fat",
+    "file": "wasp_fat.json"
+  },
+  {
+    "name": "wasp_rudder",
+    "file": "wasp_rudder.json"
+  },
+  {
+    "name": "blade_sting",
+    "file": "blade_sting.json"
+  },
+  {
+    "name": "vial_frost_blood",
+    "file": "vial_frost_blood.json"
+  },
+  {
+    "name": "vial_rage_blood",
+    "file": "vial_rage_blood.json"
+  },
+  {
+    "name": "vial_rust_blood",
+    "file": "vial_rust_blood.json"
+  },
+  {
+    "name": "vial_blood",
+    "file": "vial_blood.json"
+  },
+  {
+    "name": "spike_grenade",
+    "file": "spike_grenade.json"
+  },
+  {
+    "name": "syringe_shield",
+    "file": "syringe_shield.json"
+  },
+  {
+    "name": "blood_warmer",
+    "file": "blood_warmer.json"
+  },
+  {
+    "name": "hive_fragment",
+    "file": "hive_fragment.json"
+  },
+  {
+    "name": "nectar_rod",
+    "file": "nectar_rod.json"
+  },
+  {
+    "name": "metronome",
+    "file": "metronome.json"
+  },
+  {
+    "name": "wax_heart",
+    "file": "wax_heart.json"
+  },
+  {
+    "name": "doublesided_screwdriver",
+    "file": "doublesided_screwdriver.json"
+  },
+  {
+    "name": "electric_collar",
+    "file": "electric_collar.json"
+  },
+  {
+    "name": "hand_saw",
+    "file": "hand_saw.json"
+  },
+  {
+    "name": "injector_glove",
+    "file": "injector_glove.json"
+  },
+  {
+    "name": "jar_sugar",
+    "file": "jar_sugar.json"
+  },
+  {
+    "name": "oil_dropper",
+    "file": "oil_dropper.json"
+  },
+  {
+    "name": "spiked_glove",
+    "file": "spiked_glove.json"
+  },
+  {
+    "name": "syringe_gun",
+    "file": "syringe_gun.json"
+  },
+  {
+    "name": "thermos_coffee",
+    "file": "thermos_coffee.json"
+  },
+  {
+    "name": "wax_figurine",
+    "file": "wax_figurine.json"
+  },
+  {
+    "name": "scrapmetal_knife",
+    "file": "scrapmetal_knife.json"
+  },
+  {
+    "name": "runic_cane",
+    "file": "runic_cane.json"
+  },
+  {
+    "name": "clockwork_chicken",
+    "file": "clockwork_chicken.json"
+  },
+  {
+    "name": "clockwork_spider",
+    "file": "clockwork_spider.json"
+  },
+  {
+    "name": "cog_shield",
+    "file": "cog_shield.json"
+  },
+  {
+    "name": "accumulator",
+    "file": "accumulator.json"
+  },
+  {
+    "name": "flare_gun",
+    "file": "flare_gun.json"
+  },
+  {
+    "name": "living_ore",
+    "file": "living_ore.json"
+  },
+  {
+    "name": "magnet_beetle",
+    "file": "magnet_beetle.json"
+  },
+  {
+    "name": "clip_nails",
+    "file": "clip_nails.json"
+  },
+  {
+    "name": "coffee_thrower",
+    "file": "coffee_thrower.json"
+  },
+  {
+    "name": "sharp_cane",
+    "file": "sharp_cane.json"
+  },
+  {
+    "name": "salvage_claw",
+    "file": "salvage_claw.json"
+  }
+]

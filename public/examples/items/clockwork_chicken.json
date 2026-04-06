@@ -1,0 +1,116 @@
+{
+  "weight": 100,
+  "name": "clockwork_chicken",
+  "ico": "uid://b7ddkbr6cuq88",
+  "description": "",
+  "points": [
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 0,
+      "y": 2
+    },
+    {
+      "x": 1,
+      "y": 2
+    },
+    {
+      "x": 1,
+      "y": 1
+    },
+    {
+      "x": 2,
+      "y": 1
+    },
+    {
+      "x": 2,
+      "y": 2
+    },
+    {
+      "x": 2,
+      "y": 0
+    },
+    {
+      "x": 3,
+      "y": 0
+    }
+  ],
+  "tags": [
+    "item",
+    "hasCooldown",
+    "summon",
+    "anne"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 0
+    },
+    {
+      "name": "cooldown",
+      "value": 9
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 2,
+        "y": 1
+      },
+      "cellBot": {
+        "x": 2,
+        "y": 1
+      },
+      "cellLeft": {
+        "x": 2,
+        "y": 1
+      },
+      "cellRight": {
+        "x": 2,
+        "y": 1
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "cooldown"
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "cooldown"
+          }
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "spawner",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "characterId": "chickenLeg",
+                  "relative": "ally"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

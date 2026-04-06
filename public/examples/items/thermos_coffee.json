@@ -1,0 +1,107 @@
+{
+  "weight": 100,
+  "name": "thermos_coffee",
+  "ico": "uid://bcqjm10hr3ei8",
+  "description": "",
+  "points": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 0,
+      "y": 2
+    }
+  ],
+  "tags": [
+    "item",
+    "hasCooldown",
+    "anne",
+    "rage"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 0
+    },
+    {
+      "name": "cooldown",
+      "value": 6
+    },
+    {
+      "name": "givenRage",
+      "value": 3
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 0,
+        "y": 1
+      },
+      "cellBot": {
+        "x": 0,
+        "y": 1
+      },
+      "cellLeft": {
+        "x": 0,
+        "y": 1
+      },
+      "cellRight": {
+        "x": 0,
+        "y": 1
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "cooldown"
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "cooldown"
+          }
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "changeResource",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "resource": "rage"
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterSelf"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

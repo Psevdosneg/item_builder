@@ -1,0 +1,209 @@
+{
+  "weight": 100,
+  "name": "rusty_dagger",
+  "ico": "uid://cierfbd8p8i3r",
+  "points": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 0,
+      "y": 2
+    },
+    {
+      "x": 0,
+      "y": 3
+    }
+  ],
+  "tags": [
+    "item",
+    "hascooldown",
+    "rusty",
+    "weapon",
+    "anne"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 2
+    },
+    {
+      "name": "cooldown",
+      "value": 5.5
+    },
+    {
+      "name": "damage",
+      "value": 5
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 0,
+        "y": 3
+      },
+      "cellBot": {
+        "x": 0,
+        "y": 3
+      },
+      "cellLeft": {
+        "x": 0,
+        "y": 3
+      },
+      "cellRight": {
+        "x": 0,
+        "y": 3
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "cooldown"
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "cooldown"
+          }
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "damage"
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRelative",
+                "data": {
+                  "relative": "enemy"
+                }
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRandom",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "count": 1
+                    }
+                  },
+                  {
+                    "level": 1,
+                    "data": {
+                      "count": 2
+                    }
+                  },
+                  {
+                    "level": 2,
+                    "data": {
+                      "count": 3
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nodeType": "aura",
+      "children": [
+        {
+          "nodeType": "conditional",
+          "data": {
+            "conditionalType": "itemSelf"
+          }
+        },
+        {
+          "nodeType": "counter",
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterSelf"
+              }
+            }
+          ],
+          "data": {
+            "data": {
+              "resourceId": "madness",
+              "powers": [
+                {
+                  "level": 0,
+                  "data": 1
+                },
+                {
+                  "level": 1,
+                  "data": 1
+                },
+                {
+                  "level": 2,
+                  "data": 1
+                }
+              ]
+            },
+            "counterType": "resources"
+          }
+        }
+      ],
+      "data": {
+        "effectType": "item",
+        "data": {
+          "isDebuff": false,
+          "modificateStats": [
+            {
+              "level": 0,
+              "data": [
+                {
+                  "name": "addedDamage",
+                  "value": 15
+                }
+              ]
+            },
+            {
+              "level": 1,
+              "data": [
+                {
+                  "name": "addedDamage",
+                  "value": 15
+                }
+              ]
+            },
+            {
+              "level": 2,
+              "data": [
+                {
+                  "name": "addedDamage",
+                  "value": 15
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "weight": 100,
+  "name": "lamp",
+  "ico": "res://Resources/Items/Lamp.png",
+  "description": "",
+  "points": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 0,
+      "y": 2
+    }
+  ],
+  "tags": [
+    "item",
+    "hasCooldown",
+    "tool",
+    "burn",
+    "anne"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 1
+    },
+    {
+      "name": "cooldown",
+      "value": 5
+    },
+    {
+      "name": "givenBurn",
+      "value": 10
+    },
+    {
+      "name": "givenHaste",
+      "value": 2
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 0,
+        "y": 2
+      },
+      "cellBot": {
+        "x": 0,
+        "y": 2
+      },
+      "cellLeft": {
+        "x": 0,
+        "y": 2
+      },
+      "cellRight": {
+        "x": 0,
+        "y": 2
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "cooldown"
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "cooldown"
+          }
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "changeResource",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "resource": "burn"
+                }
+              },
+              {
+                "level": 1,
+                "data": {
+                  "resource": "burn"
+                }
+              },
+              {
+                "level": 2,
+                "data": {
+                  "resource": "burn"
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRelative",
+                "data": {
+                  "relative": "enemy"
+                }
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRandom",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "count": 1
+                    }
+                  },
+                  {
+                    "level": 1,
+                    "data": {
+                      "count": 2
+                    }
+                  },
+                  {
+                    "level": 2,
+                    "data": {
+                      "count": 3
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "addItemStateTag",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "tags": [
+                    {
+                      "tag": "hasted"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "itemPosition",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "relative": "Relative",
+                      "points": [
+                        {
+                          "x": -1,
+                          "y": 1
+                        },
+                        {
+                          "x": -2,
+                          "y": 1
+                        },
+                        {
+                          "x": 1,
+                          "y": 1
+                        },
+                        {
+                          "x": 2,
+                          "y": 1
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "itemTag",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "tags": [
+                        "hasCooldown"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "weight": 100,
+  "name": "mana_pipe",
+  "ico": "uid://clmavyiweilcw",
+  "description": "",
+  "points": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 1,
+      "y": 0
+    },
+    {
+      "x": 1,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 2
+    }
+  ],
+  "tags": [
+    "item",
+    "hasCooldown",
+    "mana",
+    "global"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 0
+    },
+    {
+      "name": "damage",
+      "value": 35
+    },
+    {
+      "name": "cooldown",
+      "value": 7
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 1,
+        "y": 0
+      },
+      "cellBot": {
+        "x": 1,
+        "y": 0
+      },
+      "cellLeft": {
+        "x": 1,
+        "y": 0
+      },
+      "cellRight": {
+        "x": 1,
+        "y": 0
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "cooldown"
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "cooldown"
+          }
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "damage"
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRelative",
+                "data": {
+                  "relative": "enemy"
+                }
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRandom",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "count": 1
+                    }
+                  },
+                  {
+                    "level": 1,
+                    "data": {
+                      "count": 2
+                    }
+                  },
+                  {
+                    "level": 2,
+                    "data": {
+                      "count": 3
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nodeType": "aura",
+      "data": {
+        "effectType": "item",
+        "data": {
+          "isDebuff": false,
+          "modificateStats": [
+            {
+              "level": 0,
+              "data": [
+                {
+                  "name": "addedDamage",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "children": [
+        {
+          "nodeType": "conditional",
+          "data": {
+            "conditionalType": "itemSelf"
+          }
+        },
+        {
+          "nodeType": "counter",
+          "data": {
+            "data": {
+              "resourceId": "mana"
+            },
+            "counterType": "resources"
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterSelf"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

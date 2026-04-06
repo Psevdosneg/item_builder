@@ -1,0 +1,37 @@
+{
+  "weight": 0,
+  "name": "gold_bar",
+  "ico": "uid://cr8syfnd5cx2f",
+  "points": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 1,
+      "y": 0
+    }
+  ],
+  "tags": [
+    "item",
+    "global"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 0
+    },
+    {
+      "name": "soldPrice",
+      "value": 3
+    }
+  ]
+}

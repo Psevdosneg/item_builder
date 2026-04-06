@@ -1,0 +1,186 @@
+{
+  "weight": 100,
+  "name": "syringe_shield",
+  "ico": "uid://cbdpgn864mo6g",
+  "points": [
+    {
+      "x": 1,
+      "y": 0
+    },
+    {
+      "x": 2,
+      "y": 0
+    },
+    {
+      "x": 2,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 1
+    },
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 0,
+      "y": 2
+    },
+    {
+      "x": 1,
+      "y": 2
+    },
+    {
+      "x": 2,
+      "y": 2
+    },
+    {
+      "x": 3,
+      "y": 2
+    },
+    {
+      "x": 3,
+      "y": 1
+    }
+  ],
+  "tags": [
+    "item",
+    "secondphase",
+    "shield",
+    "bleedRef",
+    "mikael"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 2
+    },
+    {
+      "name": "givenShield",
+      "value": 0
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 2,
+        "y": 1
+      },
+      "cellBot": {
+        "x": 2,
+        "y": 1
+      },
+      "cellLeft": {
+        "x": 2,
+        "y": 1
+      },
+      "cellRight": {
+        "x": 2,
+        "y": 1
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "changeBattleState",
+        "isPassive": true
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "battleState",
+            "data": {
+              "battleState": "madness"
+            }
+          }
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "changeResource",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "resource": "shield"
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterSelf"
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "consumeResource",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "resource": "bleed"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "nodeType": "aura",
+      "children": [
+        {
+          "nodeType": "conditional",
+          "data": {
+            "conditionalType": "itemSelf"
+          }
+        },
+        {
+          "nodeType": "counter",
+          "data": {
+            "data": {
+              "resourceId": "bleed"
+            },
+            "counterType": "resources"
+          }
+        }
+      ],
+      "data": {
+        "effectType": "item",
+        "data": {
+          "isDebuff": false,
+          "modificateStats": [
+            {
+              "level": 0,
+              "data": [
+                {
+                  "name": "addedShield",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

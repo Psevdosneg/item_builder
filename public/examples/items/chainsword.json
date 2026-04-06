@@ -1,0 +1,219 @@
+{
+  "weight": 100,
+  "name": "chainsword",
+  "ico": "uid://b88or1kc71ghi",
+  "description": "",
+  "points": [
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 0
+    },
+    {
+      "x": 2,
+      "y": 0
+    },
+    {
+      "x": 2,
+      "y": 1
+    },
+    {
+      "x": 3,
+      "y": 1
+    },
+    {
+      "x": 3,
+      "y": 0
+    },
+    {
+      "x": 4,
+      "y": 0
+    },
+    {
+      "x": 4,
+      "y": 1
+    }
+  ],
+  "tags": [
+    "item",
+    "hasCooldown",
+    "bleed",
+    "rageRef",
+    "global"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 2
+    },
+    {
+      "name": "cooldown",
+      "value": 12
+    },
+    {
+      "name": "damage",
+      "value": 80
+    },
+    {
+      "name": "givenBleed",
+      "value": 25
+    },
+    {
+      "name": "givenImpulse",
+      "value": 0.1
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 0,
+        "y": 1
+      },
+      "cellBot": {
+        "x": 0,
+        "y": 1
+      },
+      "cellLeft": {
+        "x": 0,
+        "y": 1
+      },
+      "cellRight": {
+        "x": 0,
+        "y": 1
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "cooldown"
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "cooldown"
+          }
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "damage"
+          },
+          "children": [
+            {
+              "nodeType": "activator",
+              "data": {
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "resource": "bleed"
+                    }
+                  }
+                ],
+                "activatorType": "changeResource"
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRelative",
+                "data": {
+                  "relative": "enemy"
+                }
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterRandom",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "count": 1
+                    }
+                  },
+                  {
+                    "level": 1,
+                    "data": {
+                      "count": 2
+                    }
+                  },
+                  {
+                    "level": 2,
+                    "data": {
+                      "count": 3
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "changeResource"
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "changeResource",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "resource": "rage",
+                  "mode": "greate",
+                  "delta": 0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "nodeType": "conditional",
+          "data": {
+            "conditionalType": "characterSelf"
+          }
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "impulseItem"
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "itemSelf"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

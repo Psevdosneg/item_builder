@@ -1,0 +1,161 @@
+{
+  "weight": 100,
+  "name": "coffee_thrower",
+  "ico": "uid://bkwam4elxa5ba",
+  "description": "",
+  "points": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 0
+    },
+    {
+      "x": 2,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 2
+    }
+  ],
+  "tags": [
+    "item",
+    "hasCooldown",
+    "rage",
+    "regenerationRef",
+    "ammo",
+    "anne"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 0
+    },
+    {
+      "name": "cooldown",
+      "value": 7
+    },
+    {
+      "name": "givenRage",
+      "value": 5
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 1,
+        "y": 1
+      },
+      "cellBot": {
+        "x": 1,
+        "y": 1
+      },
+      "cellLeft": {
+        "x": 1,
+        "y": 1
+      },
+      "cellRight": {
+        "x": 1,
+        "y": 1
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "cooldown"
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "cooldown"
+          }
+        },
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "resourcePrice",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "resource": "ammo",
+                  "count": 1
+                }
+              }
+            ]
+          }
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "removeResource",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "resource": "regeneration",
+                  "count": 10
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "activator",
+              "data": {
+                "activatorType": "changeResource",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "resource": "rage"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterTag",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "tags": [
+                        "enemy"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

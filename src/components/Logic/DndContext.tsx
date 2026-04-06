@@ -6,6 +6,7 @@ import {
   pointerWithin,
   KeyboardSensor,
   PointerSensor,
+  MeasuringStrategy,
   useSensor,
   useSensors,
 } from '@dnd-kit/core';
@@ -187,6 +188,7 @@ export const LogicDndProvider: React.FC<LogicDndProviderProps> = ({ children }) 
       <DndContext
         sensors={sensors}
         collisionDetection={pointerWithin}
+        measuring={{ droppable: { strategy: MeasuringStrategy.WhileDragging } }}
         onDragStart={handleDragStart}
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}

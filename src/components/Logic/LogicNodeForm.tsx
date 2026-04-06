@@ -9,7 +9,71 @@ import type { NodeType } from '../../types/logic.types';
 import { createDefaultNodeData } from '../../types/logic.types';
 import { validateNodeData } from '../../services/validation.service';
 import { getPresetsForType } from '../../utils/nodePresets';
+import { LevelDataEditor } from './LevelDataEditor';
+import type { LevelEntry } from './LevelDataEditor';
+import { ItemPositionGridEditor } from './ItemPositionGridEditor';
 import styles from './LogicNodeForm.module.css';
+
+// ─── Level Data Helpers ───────────────────────────────────────────────────────
+
+function isLevelDataArray(value: unknown): value is LevelEntry[] {
+  return (
+    Array.isArray(value) &&
+    value.length > 0 &&
+    value.every(
+      (item) =>
+        typeof item === 'object' &&
+        item !== null &&
+        'level' in item &&
+        'data' in item
+    )
+  );
+}
+
+/**
+ * Returns the dot-path to the LevelData[] within nodeData, or null if not found.
+ * Checks 'data' directly, then 'data.modificateStats' (aura).
+ * Add more paths here when new node shapes are introduced.
+ */
+function detectLevelDataPath(nodeData: unknown): string | null {
+  if (!nodeData || typeof nodeData !== 'object') return null;
+  const obj = nodeData as Record<string, unknown>;
+
+  if (isLevelDataArray(obj.data)) return 'data';
+
+  if (obj.data && typeof obj.data === 'object') {
+    const inner = obj.data as Record<string, unknown>;
+    if (isLevelDataArray(inner.modificateStats)) return 'data.modificateStats';
+  }
+
+  return null;
+}
+
+function getLevelArray(nodeData: unknown, path: string): LevelEntry[] {
+  const obj = nodeData as Record<string, unknown>;
+  if (path === 'data') return (obj.data as LevelEntry[]) ?? [];
+  if (path === 'data.modificateStats') {
+    const inner = obj.data as Record<string, unknown>;
+    return (inner?.modificateStats as LevelEntry[]) ?? [];
+  }
+  return [];
+}
+
+function applyLevelArray(
+  nodeData: unknown,
+  path: string,
+  levels: LevelEntry[]
+): Record<string, unknown> {
+  const obj = nodeData as Record<string, unknown>;
+  if (path === 'data') return { ...obj, data: levels };
+  if (path === 'data.modificateStats') {
+    return {
+      ...obj,
+      data: { ...(obj.data as Record<string, unknown>), modificateStats: levels },
+    };
+  }
+  return obj;
+}
 
 const NODE_TYPE_OPTIONS: SelectOption[] = [
   { value: 'trigger', label: 'Trigger' },
@@ -32,6 +96,8 @@ export const LogicNodeForm: React.FC<LogicNodeFormProps> = ({ nodeId }) => {
   const [localJsonText, setLocalJsonText] = useState<string>('');
   const [selectedPreset, setSelectedPreset] = useState<string>('');
   const [isJsonCollapsed, setIsJsonCollapsed] = useState<boolean>(true);
+  // Bumped to force LevelDataEditor to reinitialize (e.g. after applying a preset)
+  const [levelEditorKey, setLevelEditorKey] = useState<number>(0);
 
   // Get presets for current node type
   const presets = useMemo(() => {
@@ -41,13 +107,10 @@ export const LogicNodeForm: React.FC<LogicNodeFormProps> = ({ nodeId }) => {
 
   // Convert presets to select options
   const presetOptions: SelectOption[] = useMemo(() => {
-    return [
-      { value: '', label: 'Select a preset...' },
-      ...presets.map((preset, index) => ({
-        value: index.toString(),
-        label: preset.name,
-      })),
-    ];
+    return presets.map((preset, index) => ({
+      value: index.toString(),
+      label: preset.name,
+    }));
   }, [presets]);
 
   // Store the current nodeType in a variable to use as dependency
@@ -72,17 +135,16 @@ export const LogicNodeForm: React.FC<LogicNodeFormProps> = ({ nodeId }) => {
   };
 
   const handleJsonChange = (jsonString: string) => {
-    // Always update local text - allows free editing
     setLocalJsonText(jsonString);
-    setValidationMessage(null); // Clear validation message on edit
+    setValidationMessage(null);
 
-    // Try to parse and save to Redux if valid, but don't block if invalid
     try {
       const data = JSON.parse(jsonString);
       dispatch(updateNodeData({ nodeId, data }));
+      // Keep LevelDataEditor in sync with manual JSON edits
+      setLevelEditorKey((k) => k + 1);
     } catch {
-      // JSON is invalid, but we still allow editing
-      // User can fix it and it will auto-save when valid
+      // Invalid JSON — allow free editing
     }
   };
 
@@ -109,19 +171,39 @@ export const LogicNodeForm: React.FC<LogicNodeFormProps> = ({ nodeId }) => {
     }
   };
 
-  const handleApplyPreset = () => {
-    if (selectedPreset === '') return;
 
-    const presetIndex = parseInt(selectedPreset);
-    const preset = presets[presetIndex];
+  const levelDataPath = detectLevelDataPath(node?.data);
 
-    if (preset) {
-      const formattedData = JSON.stringify(preset.data, null, 2);
-      setLocalJsonText(formattedData);
-      dispatch(updateNodeData({ nodeId, data: preset.data }));
-      setValidationMessage(`✓ Applied preset: ${preset.name}`);
-      setIsValidationSuccess(true);
-    }
+  const handleAddLevel = () => {
+    if (!levelDataPath) return;
+    const current = getLevelArray(node.data, levelDataPath);
+    const last = current[current.length - 1];
+    const newEntry: LevelEntry = {
+      level: last !== undefined ? last.level + 1 : 0,
+      data: last !== undefined ? JSON.parse(JSON.stringify(last.data)) : {},
+    };
+    const newLevels = [...current, newEntry];
+    const newData = applyLevelArray(node.data, levelDataPath, newLevels);
+    setLocalJsonText(JSON.stringify(newData, null, 2));
+    dispatch(updateNodeData({ nodeId, data: newData }));
+    setLevelEditorKey((k) => k + 1);
+  };
+
+  const handleDeleteLastLevel = () => {
+    if (!levelDataPath) return;
+    const current = getLevelArray(node.data, levelDataPath);
+    if (current.length === 0) return;
+    const newLevels = current.slice(0, -1);
+    const newData = applyLevelArray(node.data, levelDataPath, newLevels);
+    setLocalJsonText(JSON.stringify(newData, null, 2));
+    dispatch(updateNodeData({ nodeId, data: newData }));
+    setLevelEditorKey((k) => k + 1);
+  };
+
+  const handleLevelDataChange = (levels: LevelEntry[]) => {
+    const newData = applyLevelArray(node.data, levelDataPath!, levels);
+    setLocalJsonText(JSON.stringify(newData, null, 2));
+    dispatch(updateNodeData({ nodeId, data: newData }));
   };
 
   const getNodeTypeColor = (type: NodeType): string => {
@@ -186,17 +268,21 @@ export const LogicNodeForm: React.FC<LogicNodeFormProps> = ({ nodeId }) => {
           <Select
             value={selectedPreset}
             options={presetOptions}
-            onChange={(value) => setSelectedPreset(value)}
+            onChange={(value) => {
+              setSelectedPreset(value);
+              const presetIndex = parseInt(value);
+              const preset = presets[presetIndex];
+              if (preset) {
+                const formattedData = JSON.stringify(preset.data, null, 2);
+                setLocalJsonText(formattedData);
+                dispatch(updateNodeData({ nodeId, data: preset.data }));
+                setValidationMessage(`✓ Applied preset: ${preset.name}`);
+                setIsValidationSuccess(true);
+                setLevelEditorKey((k) => k + 1);
+              }
+            }}
             fullWidth
           />
-          <Button
-            size="small"
-            variant="secondary"
-            onClick={handleApplyPreset}
-            disabled={selectedPreset === ''}
-          >
-            Apply Preset
-          </Button>
         </div>
       )}
 
@@ -205,6 +291,26 @@ export const LogicNodeForm: React.FC<LogicNodeFormProps> = ({ nodeId }) => {
         <Button size="small" variant="secondary" onClick={handleValidate}>
           Validate JSON
         </Button>
+        {levelDataPath && (
+          <>
+            <Button size="small" variant="primary" onClick={handleAddLevel}>
+              + Add Level
+            </Button>
+            <Button
+              size="small"
+              variant="danger"
+              onClick={handleDeleteLastLevel}
+              disabled={(() => {
+                const lvls = getLevelArray(node.data, levelDataPath);
+                if (lvls.length === 0) return true;
+                const last = lvls[lvls.length - 1];
+                return last.level === 0;
+              })()}
+            >
+              - Delete Level
+            </Button>
+          </>
+        )}
         {validationMessage && (
           <span
             className={styles.validationMessage}
@@ -216,6 +322,25 @@ export const LogicNodeForm: React.FC<LogicNodeFormProps> = ({ nodeId }) => {
           </span>
         )}
       </div>
+
+      {/* Level Data editor — shown when node data contains a LevelData[] array */}
+      {levelDataPath && (
+        <LevelDataEditor
+          key={levelEditorKey}
+          levels={getLevelArray(node.data, levelDataPath)}
+          onChange={handleLevelDataChange}
+          renderLevelContent={
+            (node.data as Record<string, unknown>).conditionalType === 'itemPosition'
+              ? (data, onDataChange) => (
+                  <ItemPositionGridEditor
+                    data={data as { relative: string; points: Array<{ x: number; y: number }> }}
+                    onChange={onDataChange}
+                  />
+                )
+              : undefined
+          }
+        />
+      )}
 
       {/* JSON editor - collapsible */}
       <div className={styles.jsonSection}>
@@ -241,9 +366,9 @@ export const LogicNodeForm: React.FC<LogicNodeFormProps> = ({ nodeId }) => {
               value={localJsonText}
               onChange={(e) => handleJsonChange(e.target.value)}
               placeholder="Enter node data as JSON"
-              rows={12}
+              rows={Math.max(3, localJsonText.split('\n').length)}
               fullWidth
-              style={{ fontFamily: 'monospace' }}
+              style={{ fontFamily: 'monospace', resize: 'none' }}
             />
           </div>
         )}

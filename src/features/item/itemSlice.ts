@@ -73,6 +73,14 @@ const itemSlice = createSlice({
     loadItemData: (state, action: PayloadAction<Partial<ItemState>>) => {
       return { ...state, ...action.payload };
     },
+    reorderTags: (state, action: PayloadAction<{ activeId: string; overId: string }>) => {
+      const { activeId, overId } = action.payload;
+      const from = state.tags.findIndex((t) => t.id === activeId);
+      const to = state.tags.findIndex((t) => t.id === overId);
+      if (from === -1 || to === -1 || from === to) return;
+      const [moved] = state.tags.splice(from, 1);
+      state.tags.splice(to, 0, moved);
+    },
     resetItem: () => initialState,
   },
 });
@@ -85,6 +93,7 @@ export const {
   addTag,
   updateTag,
   removeTag,
+  reorderTags,
   setTags,
   loadItemData,
   resetItem,

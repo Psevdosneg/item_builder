@@ -1,0 +1,192 @@
+{
+  "weight": 100,
+  "name": "blood_warmer",
+  "ico": "uid://bbcc247xdnmfc",
+  "points": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 1
+    },
+    {
+      "x": 1,
+      "y": 1
+    },
+    {
+      "x": 2,
+      "y": 0
+    },
+    {
+      "x": 2,
+      "y": 1
+    },
+    {
+      "x": 3,
+      "y": 1
+    },
+    {
+      "x": 3,
+      "y": 0
+    },
+    {
+      "x": 1,
+      "y": 0
+    }
+  ],
+  "tags": [
+    "item",
+    "hasCooldown",
+    "burn",
+    "bleedRef",
+    "tool"
+  ],
+  "stats": [
+    {
+      "name": "level",
+      "value": 0
+    },
+    {
+      "name": "maxLevel",
+      "value": 0
+    },
+    {
+      "name": "rarity",
+      "value": 1
+    },
+    {
+      "name": "cooldown",
+      "value": 10
+    },
+    {
+      "name": "givenBurn",
+      "value": 0
+    }
+  ],
+  "drawers": [
+    {
+      "type": "multicast",
+      "cellTop": {
+        "x": 1,
+        "y": 0
+      },
+      "cellBot": {
+        "x": 1,
+        "y": 0
+      },
+      "cellLeft": {
+        "x": 1,
+        "y": 0
+      },
+      "cellRight": {
+        "x": 1,
+        "y": 0
+      }
+    }
+  ],
+  "logic": [
+    {
+      "nodeType": "trigger",
+      "data": {
+        "triggerType": "cooldown"
+      },
+      "children": [
+        {
+          "nodeType": "checker",
+          "data": {
+            "checkerType": "cooldown"
+          }
+        },
+        {
+          "nodeType": "activator",
+          "data": {
+            "activatorType": "changeResource",
+            "data": [
+              {
+                "level": 0,
+                "data": {
+                  "resource": "burn"
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterTag",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "tags": [
+                        "enemy"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nodeType": "aura",
+      "children": [
+        {
+          "nodeType": "conditional",
+          "data": {
+            "conditionalType": "itemSelf"
+          }
+        },
+        {
+          "nodeType": "counter",
+          "children": [
+            {
+              "nodeType": "conditional",
+              "data": {
+                "conditionalType": "characterTag",
+                "data": [
+                  {
+                    "level": 0,
+                    "data": {
+                      "tags": [
+                        "enemy"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "data": {
+            "data": {
+              "resourceId": "bleed"
+            },
+            "counterType": "resources"
+          }
+        }
+      ],
+      "data": {
+        "effectType": "item",
+        "data": {
+          "isDebuff": false,
+          "modificateStats": [
+            {
+              "level": 0,
+              "data": [
+                {
+                  "name": "addedBurn",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
