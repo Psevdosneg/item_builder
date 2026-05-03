@@ -1,0 +1,16 @@
+.line {
+  stroke-width: 3;
+  stroke-linecap: round;
+  fill: none;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.line:hover {
+  opacity: 1;
+}
+
+.highlighted {
+  opacity: 1;
+  stroke-width: 4;
+}

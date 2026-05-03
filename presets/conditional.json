@@ -1,0 +1,170 @@
+[
+{
+    "name": "itemSelf",
+    "description": "Target the item itself",
+    "data": {
+      "conditionalType": "itemSelf"
+    }
+  },
+  {
+    "name": "characterSelf",
+    "description": "Target the character owning the item",
+    "data": {
+      "conditionalType": "characterSelf"
+    }
+  },
+  {
+    "name": "characterRelative - all ally",
+    "description": "Target enemy characters",
+    "data": {
+      "conditionalType": "characterRelative",
+        "data": 
+        {
+          "relative": "ally"
+        }
+    }
+  },
+  {
+    "name": "characterRelative - all enemy",
+    "description": "Target enemy characters",
+    "data": {
+      "conditionalType": "characterRelative",
+        "data": 
+        {
+          "relative": "enemy"
+        }
+    }
+  },
+  {
+    "name": "characterRandom",
+    "description": "Select random character",
+    "data": {
+      "conditionalType": "characterRandom",
+        "data": [
+            {
+                "level": 0,
+                "data": {
+                    "count": 1
+                }
+            }
+        ]
+      }
+  },
+  {
+    "name": "itemRandom",
+    "description": "Select random item",
+    "data": {
+      "conditionalType": "itemRandom",
+        "data": [
+            {
+                "level": 0,
+                "data": {
+                    "count": 1
+                }
+            }
+        ]
+      }
+  },
+  {
+    "name": "characterTag",
+    "description": "Target characters with specific tag",
+    "data": {
+      "conditionalType": "characterTag",
+      "data": [
+          {
+              "level": 0,
+              "data": {
+                  "tags": [
+                      "minion"
+                  ]
+              }
+          }
+      ]
+    }
+  },
+  {
+    "name": "enemyCharacter",
+    "description": "Target characters with specific tag",
+    "data": {
+      "conditionalType": "characterTag",
+      "data": [
+          {
+              "level": 0,
+              "data": {
+                  "tags": [
+                      "enemy"
+                  ]
+              }
+          }
+      ]
+    }
+  },
+  {
+    "name": "itemTag",
+    "description": "Check for item tag",
+    "data": {
+      "conditionalType": "itemTag",
+      "data": [
+          {
+              "level": 0,
+              "data": {
+                  "tags": [
+                      "hasCooldown"
+                  ]
+              }
+          }
+      ]
+    }
+  },
+  {
+    "name": "itemPosition",
+    "description": "Target based on item position",
+    "data": {
+      "conditionalType": "itemPosition",
+      "data": [
+          {
+              "level": 0,
+              "data": {
+                  "relative": "Relative",
+                  "points": [
+                  ]
+              }
+          }
+      ]
+    }
+  },
+  {
+    "name": "battleState",
+    "description": "Check battle state condition",
+    "data": {
+      "conditionalType": "battleState",
+      "data": {
+          "state": "madness"
+      }
+    }
+  },
+  {
+    "name": "uniqItems",
+    "description": "",
+    "data": {
+      "conditionalType": "uniqItems"
+    }
+  },
+  {
+    "name": "characterResources",
+    "description": "Check character resources",
+    "data": {
+      "conditionalType": "characterResources",
+      "data": [
+          {
+              "level": 0,
+              "data": {
+                  "mode": "equalGreate",
+                  "resourceId": "rage",
+                  "value": 30
+              }
+          }
+      ]
+    }
+  }
+]

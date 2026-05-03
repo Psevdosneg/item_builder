@@ -1,0 +1,26 @@
+.cell {
+  width: 40px;
+  height: 40px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cell:hover {
+  transform: scale(1.05);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+.cell.active {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+}
+
+.cell.active:hover {
+  background: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+}

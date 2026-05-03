@@ -1,0 +1,163 @@
+.container {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--bg-primary);
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease;
+}
+
+.header:hover {
+  background: rgba(0, 255, 136, 0.05);
+}
+
+.toggleArrow {
+  font-size: 10px;
+  color: var(--accent-primary);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.toggleArrow.collapsed {
+  transform: rotate(-90deg);
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.count {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--accent-primary);
+  opacity: 0.7;
+}
+
+.addLevelRow {
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.1);
+  border-top: 1px solid var(--border-color);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.empty {
+  padding: 12px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.entry {
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.entry:last-child {
+  border-bottom: none;
+}
+
+.entryHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.levelLabel {
+  font-size: 11px;
+  font-weight: bold;
+  color: var(--accent-primary);
+  user-select: none;
+}
+
+.levelInput {
+  width: 52px;
+  padding: 2px 6px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-family: monospace;
+  text-align: center;
+}
+
+.levelInput:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+
+/* hide browser spinner arrows */
+.levelInput::-webkit-inner-spin-button,
+.levelInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.levelInput[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.removeBtn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 11px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 3px;
+  opacity: 0.5;
+  transition: opacity 0.15s, color 0.15s;
+}
+
+.removeBtn:hover {
+  opacity: 1;
+  color: #ff4444;
+}
+
+.customContent {
+  padding: 10px;
+}
+
+.dataTextarea {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  resize: none;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.dataTextarea:focus {
+  outline: none;
+  background: rgba(0, 255, 136, 0.02);
+}

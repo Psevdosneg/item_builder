@@ -1,0 +1,138 @@
+[
+  {
+    "name": "cooldown",
+    "description": "Basic cooldown-based trigger",
+    "data": {
+      "triggerType": "cooldown"
+    }
+  },
+  {
+    "name": "itemActivated",
+    "description": "Triggers when item is activated (ignores own activation)",
+    "data": {
+      "triggerType": "itemActivated",
+      "isPassive": true
+    }
+  },
+  {
+    "name": "changeBattleState",
+    "description": "Triggers on battle state change",
+    "data": {
+      "triggerType": "changeBattleState",
+      "isPassive": true
+    }
+  },
+  {
+    "name": "itemChargesChanged",
+    "description": "Triggers when item charges change",
+    "data": {
+      "triggerType": "itemChargesChanged",
+      "isPassive": true
+    }
+  },
+  {
+    "name": "minionSpawn",
+    "description": "Triggers when a minion spawns",
+    "data": {
+      "triggerType": "minionSpawn",
+      "isPassive": true
+    }
+  },
+  {
+    "name": "minionDeath",
+    "description": "Triggers when a minion dies",
+    "data": {
+      "triggerType": "minionDeath",
+      "isPassive": true
+    }
+  },
+  {
+    "name": "dealDamage",
+    "description": "",
+    "data": {
+      "triggerType": "dealDamage",
+      "isPassive": true
+    }
+  },
+  {
+    "name": "getDamage",
+    "description": "",
+    "data": {
+      "triggerType": "getDamage",
+      "isPassive": true
+    }
+  },
+  {
+    "name": "dealHeal",
+    "description": "",
+    "data": {
+      "triggerType": "dealHeal",
+      "isPassive": true
+    }
+  },
+  {
+    "name": "getHeal",
+    "description": "",
+    "data": {
+      "triggerType": "getHeal",
+      "isPassive": true
+    }
+  },
+  {
+    "name": "battleStart",
+    "description": "",
+    "data": {
+      "triggerType": "battleStart",
+      "isPassive": true
+    }
+  },
+  {
+    "name": "changeResource",
+    "description": "",
+    "data": {
+      "triggerType": "changeResource",
+      "isPassive": true
+    }
+  },
+  {
+    "name": "getTag",
+    "description": "",
+    "data": {
+      "triggerType": "getTag",
+      "isPassive": true
+    }
+  },
+  {
+    "name": "loseTag",
+    "description": "",
+    "data": {
+      "triggerType": "loseTag",
+      "isPassive": true
+    }
+  },
+  {
+    "name": "exitBattle",
+    "description": "",
+    "data": {
+      "triggerType": "exitBattle",
+      "isPassive": true
+    }
+  },
+  {
+    "name": "soldItem",
+    "description": "",
+    "data": {
+      "triggerType": "soldItem",
+      "isPassive": true
+    }
+  },
+  {
+    "name": "buyItem",
+    "description": "",
+    "data": {
+      "triggerType": "buyItem",
+      "isPassive": true
+    }
+  }
+  
+]

@@ -1,0 +1,143 @@
+[
+  {
+    "name": "cooldown",
+    "description": "",
+    "data": {
+      "checkerType": "cooldown"
+    }
+  },
+  {
+    "name": "resourcePrice",
+    "description": "",
+    "data": {
+        "checkerType": "resourcePrice",
+        "data": [
+            {
+                "level": 0,
+                "data": {
+                    "resource": "rage",
+                    "count": 10
+                }
+            }
+        ]
+    }
+  },
+  {
+    "name": "allyPrice",
+    "description": "Check if player has enough allies",
+      "data": {
+          "checkerType": "allyPrice",
+          "data": [
+              {
+                  "level": 0,
+                  "data": 
+                  {
+                      "count": 1
+                  }
+              }
+          ]
+      }
+  },
+  {
+    "name": "Battle State Check",
+    "description": "",
+    "data": {
+      "checkerType": "battleState",
+      "data": {
+          "battleState": "madness"
+      }
+  }
+  },
+  {
+    "name": "itemConditional",
+    "description": "",
+    "data": {
+      "checkerType": "itemConditional"
+    }
+  },
+  {
+    "name": "characterConditional",
+    "description": "",
+    "data": {
+      "checkerType": "characterConditional"
+    }
+  },
+  {
+    "name": "minionConditional",
+    "description": "",
+    "data": {
+      "checkerType": "minionConditional"
+    }
+  },
+  {
+    "name": "changeResource",
+    "description": "",
+    "data": {
+            "checkerType": "changeResource",
+            "data": [
+                {
+                    "level": 0,
+                    "data": {
+                        "resource": "shield",
+                        "mode": "less",
+                        "delta": 0
+                    }
+                }
+            ]
+        }
+  },
+  {
+    "name": "changeTag",
+    "description": "",
+        "data": 
+        {
+            "checkerType": "changeTag",
+            "data": [
+                {
+                    "level": 0,
+                    "data": {
+                        "tag": "slowed"
+                    }
+                }
+            ]
+        }
+        },
+  {
+    "name": "battleResult",
+    "description": "",
+    "data": {
+            "checkerType": "battleResult",
+            "data": {
+                "result": "PlayerWin"
+            }
+        }
+  },
+  {
+    "name": "soldItem",
+    "description": "",
+    "data": {
+            "checkerType": "soldItem"
+            }
+    },
+  {
+    "name": "buyItem",
+    "description": "",
+    "data": {
+            "checkerType": "buyItem"
+            }
+    },
+  {
+    "name": "activationsCount",
+    "description": "",
+    "data": { "checkerType": "activationsCount",
+    "data": [
+      {
+        "level": 0,
+        "data": {
+          "count": 4
+        }
+      }
+    ]
+  }
+    }
+]

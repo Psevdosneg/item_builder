@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(8, 28px);
+  gap: 3px;
+  transition: transform 0.3s ease;
+}
+
+.cell {
+  width: 28px;
+  height: 28px;
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border-color);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cell:hover {
+  transform: scale(1.1);
+  border-color: var(--accent-primary);
+  z-index: 1;
+}
+
+.cell.active {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+.cell.selected {
+  transform: scale(1.15);
+  box-shadow: 0 0 12px currentColor;
+  z-index: 2;
+}
+
+.cell.selected:hover {
+  transform: scale(1.2);
+}

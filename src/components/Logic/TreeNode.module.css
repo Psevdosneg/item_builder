@@ -1,0 +1,44 @@
+.treeNode {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 13px;
+}
+
+.nodeLine {
+  display: flex;
+  align-items: center;
+  padding: 2px 0;
+  transition: background 0.2s ease;
+}
+
+.nodeLine:hover {
+  background: rgba(0, 255, 136, 0.05);
+}
+
+.prefix,
+.connector {
+  color: var(--border-color);
+  user-select: none;
+}
+
+.expandIcon {
+  color: var(--accent-primary);
+  font-size: 10px;
+  margin-right: 4px;
+  user-select: none;
+}
+
+.nodeType {
+  font-weight: bold;
+  text-shadow: 0 0 5px currentColor;
+  margin-left: 4px;
+}
+
+.childCount {
+  color: var(--text-secondary);
+  font-size: 11px;
+  margin-left: 6px;
+}
+
+.children {
+  /* Children are rendered with updated prefix */
+}

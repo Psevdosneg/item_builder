@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Item Effect Aura",
+    "description": "",
+    "data": {
+             "effectType": "item",
+                    "data": 
+                    {
+                        "isDebuff": false,
+                        "modificateStats": 
+                        [
+                            {
+                                "level": 0,
+                                "data": 
+                                [
+                                    {
+                                        "name": "addedMulticast",
+                                        "value": 1
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+            }
+  }
+]

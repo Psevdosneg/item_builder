@@ -1,0 +1,78 @@
+[
+  {
+    "name": "resources counter",
+    "description": "Count specific resource amount",
+    "data":
+              {
+                "counterType": "resources",
+                "data": {
+                    "resourceId": "rage"
+                }
+							}
+	},
+  {
+    "name": "character Counter",
+    "description": "Count characters",
+    "data": {
+							"counterType": "character"
+						}
+  },
+  {
+    "name": "items Counter",
+    "description": "Count items ",
+    "data": {
+              "counterType": "item",
+              "data": {
+                  "includeDestroyed": false
+              }
+						}
+  },
+  {
+    "name": "powers Counter",
+    "description": "Count items ",
+    "data": {
+              "counterType": "resources",
+              "data": {
+                "resourceId": "rage",
+                "powers": [ 
+                  {
+                    "level": 0,
+                    "data": 0.5
+                  }
+                ]
+              }
+            }
+  },
+  {
+    "name": "statistic Counter",
+    "description": "Count items ",
+    "data": {
+                "counterType": "statistic",
+                "data": {
+                    "stat": "minionsSpawned",
+                    "powers": [
+                        {
+                            "level": 0,
+                            "data": 1
+                        }
+                    ]
+                }
+            }
+  },
+  {
+    "name": "itemStat Counter",
+    "description": "Count items ",
+    "data": {
+                "counterType": "statistic",
+                "data": {
+                          "StatId": "damage",
+                          "powers": [
+                            {
+                              "level": 0,
+                              "data": 0.1
+                            }
+                          ]
+                        }
+            }
+  }
+]

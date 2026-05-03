@@ -1,0 +1,177 @@
+[
+  {
+    "name": "damage",
+    "description": "",
+    "data": {
+      "activatorType": "damage"
+    }
+  },
+  {
+    "name": "impulseItem",
+    "description": "",
+    "data": {
+							"activatorType": "impulseItem"
+						}
+  },
+  {
+    "name": "heal",
+    "description": "",
+    "data": {
+							"activatorType": "heal"
+						}
+  },
+  {
+    "name": "forceActivateItem",
+    "description": "",
+    "data": {
+              "activatorType": "forceActivateItem"
+            }
+  },
+  {
+    "name": "changeResource",
+    "description": "",
+    "data": {
+            "activatorType": "changeResource",
+            "data": 
+            [
+              {
+                "level": 0,
+                "data": 
+                {
+                  "resource": "rage"
+                }
+              }
+            ]
+    }
+  },
+  {
+    "name": "removeResource",
+    "description": "",
+    "data": {
+              "activatorType": "removeResource",
+              "data": [
+                {
+                  "level": 0,
+                  "data": {
+                    "resource": "regeneration",
+                    "count" : 10
+                  }
+                }
+              ]
+  }
+  },
+  {
+    "name": "consumeResource",
+    "description": "",
+    "data": {
+                "activatorType": "consumeResource",
+                "data": {
+                    "resource": "bleed"
+                }
+            }
+  },
+
+  {
+    "name": "spawner",
+    "description": "",
+    "data": {
+							"activatorType": "spawner",
+							"data": 
+              [
+								{
+									"level": 0,
+									"data": 
+                  {
+										"characterId": "CripSmall",
+										"relative": "ally"
+									}
+								}
+							]
+						}
+  },
+  {
+    "name": "addItemStateTag",
+    "description": "",
+    "data": {
+              "activatorType": "addItemStateTag",
+              "data": [
+                  {
+                      "level": 0,
+                      "data": {
+                          "tags": 
+                          [
+                            "slowed"
+                          ]
+                      }
+                  }
+              ]
+          }
+  },
+  {
+    "name": "deleteItemStateTags",
+    "description": "",
+    "data": {
+            "activatorType": "deleteItemStateTag",
+            "data": [
+                {
+                    "level": 0,
+                    "data": {
+                        "tags": 
+                        [
+                          "slowed"
+                        ]
+                    }
+                }
+            ]
+        }
+  },
+  {
+    "name": "addItemModificator",
+    "description": "",
+    "data": {
+            "activatorType": "addItemModificator",
+            "data": [
+                {
+                    "level": 0,
+                    "data": {
+                        "stat": "addedDamage",
+                        "value": 10
+                    }
+                }
+            ]
+        }
+},
+  {
+    "name": "addItem",
+    "description": "",
+    "data": {
+              "activatorType": "addItem",
+              "data": [
+                  {
+                      "level": 0,
+                      "data": {
+                          "count": 1,
+                          "items": ["cleaver"]
+                      }
+                  }
+              ]
+          }
+  },
+  {
+    "name": "randomSpawner",
+    "description": "",
+    "data": {
+        "activatorType": "randomSpawner",
+        "data": [
+            {
+                "level": 0,
+                "data": {
+                    "relative": "ally",
+                    "characters":[ "CripRabbit", "CripRabbit", "CripRabbit"],
+                    "count": 1
+                }
+            }
+        ]
+    }
+  }
+]
